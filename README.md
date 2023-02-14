@@ -1,6 +1,13 @@
-# 사용자 관리를 위한 프로젝트
+# 사용자 관리를 위한 프로젝트 - 프로토타입
 
-### 주요 기능
+## v.0.0.1
+> 프로젝트 버전
+- 0.0.1
+
+> 프로젝트 설명
+- Dynamic Web Project와 Servlet, JSP를 활용한 사용자 관리 모듈 개발
+
+> 주요 기능
 1. 회원가입
 2. 회원탈퇴
 3. 로그인
@@ -12,15 +19,8 @@
 9. 회원 목록 조회(관리자)
 10. 회원 정보 상세보기(관리자)
 
-### Branch
-- main
-  - 프로젝트에 대한 전체적인 설명 작성
-- v0.x.x
-  - v.0.0.1
-    - 사용자 관리를 위한 프로젝트 - 프로토타입
-    - Skill
-      - Dynamic Web Project + JSP + Servlet 기반
-      - JDK 1.8
-      - Tomcat v9.x 버전 이상
-      - HTML5 + CSS3 기반
-      
+> 사용 기술
+- Dynamic Web Project + JSP + Servlet 기반
+- JDK 1.8
+- Tomcat v9.x 버전 이상
+- HTML5 + CSS3 기반
