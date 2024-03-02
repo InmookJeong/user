@@ -18,6 +18,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
+		
+		<!--SpringFramework Version : 4.3.x의 가장 마지막 버전 사용 -->
+		<srpingframework.version>4.3.30.RELEASE</srpingframework.version>
 	</properties>
 
 	<dependencies>
