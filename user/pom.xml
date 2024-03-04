@@ -24,6 +24,17 @@
 	</properties>
 
 	<dependencies>
+		<!-- ######################################## -->
+		<!-- ##### SpringFramework dependencies ##### -->
+		<!-- ######################################## -->
+		
+		<!-- SpringFramework webmvc 추가 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${srpingframework.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
