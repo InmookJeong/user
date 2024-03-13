@@ -1,6 +1,7 @@
 package kr.mook.user.common.service;
 
 import kr.mook.user.common.dto.LoginDTO;
+import kr.mook.user.member.dto.MemberDTO;
 
 /**
  * Interface for implementing user-related business logic.
@@ -17,7 +18,52 @@ public interface UserService {
 	 * 
 	 * @param loginDTO
 	 * @return
+	 * @since 2024.03.11
+	 * @author In-mook, Jeong
 	 */
 	public boolean login(LoginDTO loginDTO);
-
+	
+	/**
+	 * This method checks if the userId exists.<br/>
+	 * Returns true if userId exists, false if not.
+	 * 
+	 * @param userId
+	 * @return
+	 * @since 2024.03.13
+	 * @author In-mook, Jeong
+	 */
+	public boolean existUserId(String userId);
+	
+	/**
+	 * This method checks if the email exists.<br/>
+	 * Returns true if email exists, false if not.
+	 * 
+	 * @param email
+	 * @return
+	 * @since 2024.03.13
+	 * @author In-mook, Jeong
+	 */
+	public boolean existEmail(String email);
+	
+	/**
+	 * This method checks if the phone number exists.<br/>
+	 * Returns true if phone number exists, false if not.
+	 * 
+	 * @param phone
+	 * @return
+	 * @since 2024.03.13
+	 * @author In-mook, Jeong
+	 */
+	public boolean existPhoneNumber(String phone);
+	
+	/**
+	 * This method processes membership registration by storing the information entered by the user.<br/>
+	 * Returns true if registration is successful and false if registration fails.
+	 * 
+	 * @param memberDTO
+	 * @return
+	 * @since 2024.03.13
+	 * @author In-mook, Jeong
+	 */
+	public boolean signUp(MemberDTO memberDTO);
 }

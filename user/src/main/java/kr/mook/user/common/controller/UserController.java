@@ -62,10 +62,33 @@ public class UserController {
 		return UserViewConstatns.COMMON_LOGIN;
 	}
 	
+	/**
+	 * Execute the logout function.<br/>
+	 * Removes login information stored in the session.
+	 * 
+	 * @param request
+	 * @return
+	 * @since 2024.03.11
+	 * @author In-mook, Jeong
+	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.removeAttribute("isAlive");
 		return UserViewConstatns.COMMON_HOME;
+	}
+	
+	/**
+	 * Move you to the singup page.
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/sign-up", method = RequestMethod.GET)
+	public String signUp(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
+		if(isAlive) return UserViewConstatns.COMMON_HOME;
+		return UserViewConstatns.COMMON_SIGNUP;
 	}
 }
