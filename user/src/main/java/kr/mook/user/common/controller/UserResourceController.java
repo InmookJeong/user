@@ -1,5 +1,6 @@
 package kr.mook.user.common.controller;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -155,7 +156,7 @@ public class UserResourceController {
 	 * @param request
 	 * @param memberDTO
 	 * @return
-	 * @since 2024.03.13
+	 * @since 2024.03.14
 	 * @author In-mook, Jeong
 	 */
 	@RequestMapping(value = "/find-id", method = RequestMethod.POST)
@@ -172,11 +173,29 @@ public class UserResourceController {
 	 * @param request
 	 * @param memberDTO
 	 * @return
+	 * @since 2024.03.14
+	 * @author In-mook, Jeong
 	 */
 	@RequestMapping(value = "/find-password", method = RequestMethod.POST)
 	@ResponseBody
 	public String findPassword(HttpServletRequest request, @RequestBody MemberDTO memberDTO) {
 		_log.info("##### memberDTO : "+ memberDTO.toString());
 		return this.userService.findPassword(memberDTO);
+	}
+	
+	/**
+	 * This method provides the ability to query the user list.
+	 * 
+	 * @param request
+	 * @param memberDTO
+	 * @return
+	 * @since 2024.03.14
+	 * @author In-mook, Jeong
+	 */
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	@ResponseBody
+	public List<MemberDTO> list(HttpServletRequest request, @RequestBody MemberDTO memberDTO) {
+		_log.info("##### memberDTO : "+ memberDTO.toString());
+		return this.userService.list(memberDTO);
 	}
 }

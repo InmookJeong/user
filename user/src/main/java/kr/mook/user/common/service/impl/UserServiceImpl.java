@@ -1,5 +1,7 @@
 package kr.mook.user.common.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.stereotype.Service;
@@ -24,7 +26,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean login(LoginDTO loginDTO) {
-		if(loginDTO.getUserId().equals("test") && loginDTO.getPassword().equals("testPassword")) {
+		if(loginDTO.getUserId().equals("test") 
+			&& loginDTO.getPassword().equals("testPassword")) {
 			return true;
 		}
 		
@@ -87,6 +90,30 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		return "";
+	}
+
+	@Override
+	public List<MemberDTO> list(MemberDTO memberDTO) {
+		List<MemberDTO> memberList = new ArrayList<MemberDTO>();
+		MemberDTO member1 = new MemberDTO();
+		member1.setUserId("test");
+		member1.setName("홍길동");
+		member1.setEmail("test@gmail.com");
+		memberList.add(member1);
+		
+		MemberDTO member2 = new MemberDTO();
+		member2.setUserId("korean");
+		member2.setName("한국인");
+		member2.setEmail("korean@korea.com");
+		memberList.add(member2);
+		
+		MemberDTO member3 = new MemberDTO();
+		member3.setUserId("userTest");
+		member3.setName("사용자");
+		member3.setEmail("userTest@gmail.com");
+		memberList.add(member3);
+		
+		return memberList;
 	}
 
 }

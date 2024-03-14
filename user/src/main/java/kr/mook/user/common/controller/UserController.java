@@ -83,6 +83,8 @@ public class UserController {
 	 * 
 	 * @param request
 	 * @return
+	 * @since 2024.03.13
+	 * @author In-mook, Jeong
 	 */
 	@RequestMapping(value = "/sign-up", method = RequestMethod.GET)
 	public String signUp(HttpServletRequest request) {
@@ -97,6 +99,8 @@ public class UserController {
 	 * 
 	 * @param request
 	 * @return
+	 * @since 2024.03.14
+	 * @author In-mook, Jeong
 	 */
 	@RequestMapping(value = "/find-id", method = RequestMethod.GET)
 	public String findId(HttpServletRequest request) {
@@ -111,6 +115,8 @@ public class UserController {
 	 * 
 	 * @param request
 	 * @return
+	 * @since 2024.03.14
+	 * @author In-mook, Jeong
 	 */
 	@RequestMapping(value = "/find-password", method = RequestMethod.GET)
 	public String findPassword(HttpServletRequest request) {
@@ -118,5 +124,21 @@ public class UserController {
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.COMMON_HOME;
 		return UserViewConstatns.COMMON_FIND_PASSWORD;
+	}
+	
+	/**
+	 * Move you to the search user list page.
+	 * 
+	 * @param request
+	 * @return
+	 * @since 2024.03.14
+	 * @author In-mook, Jeong
+	 */
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String list(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
+		if(isAlive) return UserViewConstatns.ADMIN_LIST;
+		return UserViewConstatns.COMMON_HOME;
 	}
 }

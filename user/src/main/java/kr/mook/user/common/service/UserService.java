@@ -1,5 +1,7 @@
 package kr.mook.user.common.service;
 
+import java.util.List;
+
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.member.dto.MemberDTO;
 
@@ -87,4 +89,14 @@ public interface UserService {
 	 * @author In-mook, Jeong
 	 */
 	public String findPassword(MemberDTO memberDTO);
+	
+	/**
+	 * Search the user list according to the search conditions.
+	 * 
+	 * @param memberDTO
+	 * @return
+	 * @since 2024.03.14
+	 * @author In-mook, Jeong
+	 */
+	public List<MemberDTO> list(MemberDTO memberDTO);
 }
