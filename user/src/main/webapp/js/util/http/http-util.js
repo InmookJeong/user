@@ -45,6 +45,8 @@ const HttpUtil = (() => {
 	const post = async (url, sendData, returnType) => {
 		if(returnType === RETURN_TYPE.JSON) {
 			return await postJson(url, sendData);
+		} else if(returnType === RETURN_TYPE.TEXT) {
+			return await postText(url, sendData);
 		}
 	};
 	
@@ -59,6 +61,19 @@ const HttpUtil = (() => {
 		
 		const response = await callApi(url, requestObject);
 		return await response.json();
+	}
+	
+	const postText = async (url, sendData) => {
+		const requestObject = {
+			method: REQUEST_METHOD.POST,
+			headers: {
+				'Content-Type': 'application/json;charset=utf-8'
+			},
+			body: JSON.stringify(sendData)
+		};
+		
+		const response = await callApi(url, requestObject);
+		return await response.text();
 	}
 	
 	const callApi = async (url, requestObject) => {

@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Login</title>
+		<title>로그인</title>
 		
 		<script src="${pageContext.request.contextPath}/js/crypto-js/3.1.2/core-min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/crypto-js/3.1.2/sha256-min.js"></script>

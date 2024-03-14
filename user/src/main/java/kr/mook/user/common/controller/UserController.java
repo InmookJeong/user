@@ -91,4 +91,32 @@ public class UserController {
 		if(isAlive) return UserViewConstatns.COMMON_HOME;
 		return UserViewConstatns.COMMON_SIGNUP;
 	}
+	
+	/**
+	 * Move you to the find ID page.
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/find-id", method = RequestMethod.GET)
+	public String findId(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
+		if(isAlive) return UserViewConstatns.COMMON_HOME;
+		return UserViewConstatns.COMMON_FIND_ID;
+	}
+	
+	/**
+	 * Move you to the find Password page.
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/find-password", method = RequestMethod.GET)
+	public String findPassword(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
+		if(isAlive) return UserViewConstatns.COMMON_HOME;
+		return UserViewConstatns.COMMON_FIND_PASSWORD;
+	}
 }

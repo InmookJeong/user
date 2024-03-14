@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.service.UserService;
 import kr.mook.user.member.dto.MemberDTO;
+import kr.mook.user.util.data.RandomStringUtils;
 
 /**
  * This is a class that implements user-related business logic.
@@ -65,6 +66,27 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		return false;
+	}
+
+	@Override
+	public String findId(MemberDTO memberDTO) {
+		if(memberDTO.getName().equals("홍길동")
+			&& memberDTO.getEmail().equals("test@gmail.com")) {
+			return "test";
+		}
+		
+		return "User not found.";
+	}
+
+	@Override
+	public String findPassword(MemberDTO memberDTO) {
+		if(memberDTO.getName().equals("홍길동")
+			&& memberDTO.getUserId().equals("test")
+			&& memberDTO.getEmail().equals("test@gmail.com")) {
+			return RandomStringUtils.getRandomString(10);
+		}
+		
+		return "";
 	}
 
 }

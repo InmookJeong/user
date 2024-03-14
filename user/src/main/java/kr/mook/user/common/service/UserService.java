@@ -66,4 +66,25 @@ public interface UserService {
 	 * @author In-mook, Jeong
 	 */
 	public boolean signUp(MemberDTO memberDTO);
+	
+	/**
+	 * This method provides the function to find the userId.<br/>
+	 * If user information is available, the ID is returned.
+	 * 
+	 * @param memberDTO
+	 * @return
+	 * @since 2024.03.14
+	 * @author In-mook, Jeong
+	 */
+	public String findId(MemberDTO memberDTO);
+	
+	/**
+	 * If user information is available, a temporary password will be created and provided to you.<br/>
+	 * 
+	 * @param memberDTO
+	 * @return
+	 * @since 2024.03.14
+	 * @author In-mook, Jeong
+	 */
+	public String findPassword(MemberDTO memberDTO);
 }
