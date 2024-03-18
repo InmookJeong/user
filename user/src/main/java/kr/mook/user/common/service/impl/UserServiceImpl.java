@@ -21,7 +21,7 @@ import kr.mook.user.util.data.RandomStringUtils;
 @Service
 public class UserServiceImpl implements UserService {
 	
-	// UserController Logger
+	// UserService Logger
 	private final Logger _log = Logger.getLogger(UserService.class.getName());
 
 	@Override

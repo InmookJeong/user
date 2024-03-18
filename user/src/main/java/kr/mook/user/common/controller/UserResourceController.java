@@ -31,7 +31,7 @@ import kr.mook.user.member.dto.MemberDTO;
 @RequestMapping("/resource/user")
 public class UserResourceController {
 	
-	// UserController Logger
+	// UserResourceController Logger
 	private final Logger _log = Logger.getLogger(UserResourceController.class.getName());
 	
 	@Autowired
