@@ -38,35 +38,6 @@ public class UserResourceController {
 	private UserService userService;
 	
 	/**
-	 * The login method is to log in if there is member information that matches the userId and password.
-	 * 
-	 * @param request
-	 * @param loginDTO
-	 * @return
-	 * @since 2024.03.11
-	 * @author In-mook, Jeong
-	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	@ResponseBody
-	public UserResourceResultDTO login(HttpServletRequest request, @RequestBody LoginDTO loginDTO) {
-		UserResourceResultDTO userResourceResultDTO = new UserResourceResultDTO();
-		
-		if(this.userService.login(loginDTO)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("isAlive", true);
-			
-			userResourceResultDTO.setStatus(UserResourceConstants.STATUS_LOGIN_SUCCESS);
-			userResourceResultDTO.setMessage(UserResourceConstants.MESSAGE_LOGIN_SUCCESS);
-		} else {
-			userResourceResultDTO.setStatus(UserResourceConstants.STATUS_LOGIN_FAILED);
-			userResourceResultDTO.setMessage(UserResourceConstants.MESSAGE_LOGIN_FAILED);
-		}
-		
-		_log.info("##### userResourceResultDTO : "+ userResourceResultDTO.toString());
-		return userResourceResultDTO;
-	}
-	
-	/**
 	 * This method checks whether the userId entered by the user when signing up has already been registered.
 	 * 
 	 * @param request

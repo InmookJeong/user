@@ -8,10 +8,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.mook.user.common.dto.LoginDTO;
+import kr.mook.user.common.dto.UserResourceResultDTO;
 import kr.mook.user.common.service.UserService;
+import kr.mook.user.constants.UserResourceConstants;
 import kr.mook.user.constants.UserViewConstatns;
 import kr.mook.user.util.data.DataUtils;
 
@@ -23,7 +28,7 @@ import kr.mook.user.util.data.DataUtils;
  * @version 0.0.1
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
 	
 	// UserController Logger
@@ -60,6 +65,35 @@ public class UserController {
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.COMMON_HOME;
 		return UserViewConstatns.COMMON_LOGIN;
+	}
+	
+	/**
+	 * The login method is to log in if there is member information that matches the userId and password.
+	 * 
+	 * @param request
+	 * @param loginDTO
+	 * @return
+	 * @since 2024.03.11
+	 * @author In-mook, Jeong
+	 */
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@ResponseBody
+	public UserResourceResultDTO login(HttpServletRequest request, @RequestBody LoginDTO loginDTO) {
+		UserResourceResultDTO userResourceResultDTO = new UserResourceResultDTO();
+		
+		if(this.userService.login(loginDTO)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("isAlive", true);
+			
+			userResourceResultDTO.setStatus(UserResourceConstants.STATUS_LOGIN_SUCCESS);
+			userResourceResultDTO.setMessage(UserResourceConstants.MESSAGE_LOGIN_SUCCESS);
+		} else {
+			userResourceResultDTO.setStatus(UserResourceConstants.STATUS_LOGIN_FAILED);
+			userResourceResultDTO.setMessage(UserResourceConstants.MESSAGE_LOGIN_FAILED);
+		}
+		
+		_log.info("##### userResourceResultDTO : "+ userResourceResultDTO.toString());
+		return userResourceResultDTO;
 	}
 	
 	/**

@@ -39,7 +39,7 @@ async function login() {
 	}
 	
 	const httpUtil = HttpUtil();
-	const result = await httpUtil.post('/resource/user/login', sendData, httpUtil.RETURN_TYPE.JSON);
+	const result = await httpUtil.post('/login', sendData, httpUtil.RETURN_TYPE.JSON);
 	console.log('result -> ', result);
 	if(result.status === 'SLI-001') {
 		alert(result.message);
