@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.mook.user.common.dto.LoginDTO;
-import kr.mook.user.common.dto.UserResourceResultDTO;
+import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
 import kr.mook.user.constants.UserResourceConstants;
 import kr.mook.user.member.dto.MemberDTO;
@@ -105,9 +105,9 @@ public class UserResourceController {
 	 */
 	@RequestMapping(value = "/sign-up", method = RequestMethod.POST)
 	@ResponseBody
-	public UserResourceResultDTO signUp(HttpServletRequest request, @RequestBody MemberDTO memberDTO) {
+	public UserResultDTO signUp(HttpServletRequest request, @RequestBody MemberDTO memberDTO) {
 		_log.info("##### memberDTO : "+ memberDTO.toString());
-		UserResourceResultDTO userResourceResultDTO = new UserResourceResultDTO();
+		UserResultDTO userResourceResultDTO = new UserResultDTO();
 		
 		if(this.userService.signUp(memberDTO)) {
 			userResourceResultDTO.setStatus(UserResourceConstants.STATUS_SIGNUP_SUCCESS);

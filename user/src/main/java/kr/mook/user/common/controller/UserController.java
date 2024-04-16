@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.mook.user.common.dto.LoginDTO;
-import kr.mook.user.common.dto.UserResourceResultDTO;
+import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
 import kr.mook.user.constants.UserResourceConstants;
 import kr.mook.user.constants.UserViewConstatns;
@@ -78,8 +78,8 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
-	public UserResourceResultDTO login(HttpServletRequest request, @RequestBody LoginDTO loginDTO) {
-		UserResourceResultDTO userResourceResultDTO = new UserResourceResultDTO();
+	public UserResultDTO login(HttpServletRequest request, @RequestBody LoginDTO loginDTO) {
+		UserResultDTO userResourceResultDTO = new UserResultDTO();
 		
 		if(this.userService.login(loginDTO)) {
 			HttpSession session = request.getSession();

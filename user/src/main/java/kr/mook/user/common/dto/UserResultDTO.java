@@ -1,7 +1,7 @@
 package kr.mook.user.common.dto;
 
 /**
- * UserResourceResultDTO is an object that returns results such as login, logout, and membership registration.<br/>
+ * UserResultDTO is an object that returns results such as login, logout, and membership registration.<br/>
  * Fields<br/>
  * &emsp;- status : Query Result Status field.<br/>
  * &emsp;- message : Query result message field.<br/>
@@ -11,7 +11,7 @@ package kr.mook.user.common.dto;
  * @author In-mook, Jeong
  * @version 0.0.1
  */
-public class UserResourceResultDTO {
+public class UserResultDTO {
 	
 	// Fields
 	private String status;
@@ -19,10 +19,10 @@ public class UserResourceResultDTO {
 	private String data;
 	
 	// Default Constructor
-	public UserResourceResultDTO() {}
+	public UserResultDTO() {}
 
 	// Constructor
-	public UserResourceResultDTO(String status, String message, String data) {
+	public UserResultDTO(String status, String message, String data) {
 		this.status = status;
 		this.message = message;
 		this.data = data;
