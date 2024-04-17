@@ -7,7 +7,11 @@ import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
 
 import kr.mook.user.common.dto.LoginDTO;
+import kr.mook.user.common.dto.UserResultContentDTO;
+import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
+import kr.mook.user.constants.StatusEnum;
+import kr.mook.user.constants.UserMessageConstants;
 import kr.mook.user.member.dto.MemberDTO;
 import kr.mook.user.util.data.RandomStringUtils;
 
@@ -25,13 +29,54 @@ public class UserServiceImpl implements UserService {
 	private final Logger _log = Logger.getLogger(UserService.class.getName());
 
 	@Override
-	public boolean login(LoginDTO loginDTO) {
+	public UserResultDTO login(LoginDTO loginDTO) {
+		UserResultDTO userResultDTO = new UserResultDTO("Log-in");
+		// password : test1234
+		String encryptPw = "937e8d5fbb48bd4949536cd65b8d35c426b80d2f830c5c308e2cdec422ae2244";
 		if(loginDTO.getUserId().equals("test") 
-			&& loginDTO.getPassword().equals("testPassword")) {
-			return true;
+			&& loginDTO.getPassword().equals(encryptPw)) {
+			userResultDTO.setStatus(
+				StatusEnum.LOGIN_SUCCESS.getStatus(),
+				StatusEnum.LOGIN_SUCCESS.getStatusEngMessage(),
+				StatusEnum.LOGIN_SUCCESS.getStatusKorMessage()
+			);
+			
+			UserResultContentDTO userResultContentDTO = new UserResultContentDTO();
+			userResultContentDTO.setTitle("로그인 성공");
+			userResultContentDTO.setContent("12345667");
+			userResultContentDTO.setMessage("OOO님 환영합니다.");
+			userResultDTO.setContent("OBJECT", userResultContentDTO);
+		} else {
+			userResultDTO.setStatus(
+				StatusEnum.LOGIN_FAILED.getStatus(),
+				StatusEnum.LOGIN_FAILED.getStatusEngMessage(),
+				StatusEnum.LOGIN_FAILED.getStatusKorMessage()
+			);
+			
+			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_LOGIN_FAILED);
 		}
 		
-		return false;
+		return userResultDTO;
+	}
+	
+	@Override
+	public UserResultDTO logout() {
+		UserResultDTO userResultDTO = new UserResultDTO("Log-out");
+//		userResultDTO.setStatus(
+//			StatusEnum.LOGOUT_SUCCESS.getStatus(),
+//			StatusEnum.LOGOUT_SUCCESS.getStatusEngMessage(),
+//			StatusEnum.LOGOUT_SUCCESS.getStatusKorMessage()
+//		);
+		userResultDTO.setStatus(
+				StatusEnum.LOGOUT_FAILED.getStatus(),
+				StatusEnum.LOGOUT_FAILED.getStatusEngMessage(),
+				StatusEnum.LOGOUT_FAILED.getStatusKorMessage()
+				);
+		
+//		userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_LOGOUT_SUCCESS);
+		userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_LOGOUT_FAILED);
+		
+		return userResultDTO;
 	}
 
 	@Override

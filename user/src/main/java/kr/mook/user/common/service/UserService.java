@@ -3,6 +3,7 @@ package kr.mook.user.common.service;
 import java.util.List;
 
 import kr.mook.user.common.dto.LoginDTO;
+import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.member.dto.MemberDTO;
 
 /**
@@ -16,14 +17,25 @@ public interface UserService {
 	
 	/**
 	 * This method implements functionality for handling logins.<br/>
-	 * Returns true if the user ID and password match, false otherwise.
+	 * Depending on whether the login is successful or not, the status code, status message, and message to be delivered to the user are returned.
 	 * 
 	 * @param loginDTO
 	 * @return
 	 * @since 2024.03.11
 	 * @author In-mook, Jeong
 	 */
-	public boolean login(LoginDTO loginDTO);
+	public UserResultDTO login(LoginDTO loginDTO);
+	
+	/**
+	 * This method implements functionality for handling logout.<br/>
+	 * Depending on whether the logout is successful or not, the status code, status message, and message to be delivered to the user are returned.
+	 * 
+	 * @param loginDTO
+	 * @return
+	 * @since 2024.04.17
+	 * @author In-mook, Jeong
+	 */
+	public UserResultDTO logout();
 	
 	/**
 	 * This method checks if the userId exists.<br/>

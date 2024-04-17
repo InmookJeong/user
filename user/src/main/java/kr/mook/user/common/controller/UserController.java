@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
-import kr.mook.user.constants.UserResourceConstants;
 import kr.mook.user.constants.UserViewConstatns;
 import kr.mook.user.util.data.DataUtils;
 
@@ -79,21 +78,9 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
 	public UserResultDTO login(HttpServletRequest request, @RequestBody LoginDTO loginDTO) {
-		UserResultDTO userResourceResultDTO = new UserResultDTO();
-		
-		if(this.userService.login(loginDTO)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("isAlive", true);
-			
-			userResourceResultDTO.setStatus(UserResourceConstants.STATUS_LOGIN_SUCCESS);
-			userResourceResultDTO.setMessage(UserResourceConstants.MESSAGE_LOGIN_SUCCESS);
-		} else {
-			userResourceResultDTO.setStatus(UserResourceConstants.STATUS_LOGIN_FAILED);
-			userResourceResultDTO.setMessage(UserResourceConstants.MESSAGE_LOGIN_FAILED);
-		}
-		
-		_log.info("##### userResourceResultDTO : "+ userResourceResultDTO.toString());
-		return userResourceResultDTO;
+		_log.info("##### Execute login processing.");
+		UserResultDTO userResultDTO = this.userService.login(loginDTO);
+		return userResultDTO;
 	}
 	
 	/**
@@ -107,8 +94,12 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
+		_log.info("##### Execute logout processing.");
 		HttpSession session = request.getSession();
 		session.removeAttribute("isAlive");
+		
+		UserResultDTO userResultDTO = this.userService.logout();
+		_log.info("##### Logout result : " + userResultDTO.toString());
 		return UserViewConstatns.COMMON_HOME;
 	}
 	

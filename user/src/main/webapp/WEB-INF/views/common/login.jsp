@@ -41,11 +41,15 @@ async function login() {
 	const httpUtil = HttpUtil();
 	const result = await httpUtil.post('/login', sendData, httpUtil.RETURN_TYPE.JSON);
 	console.log('result -> ', result);
-	if(result.status === 'SLI-001') {
-		alert(result.message);
-		location.href = '/user';
-	} else if(result.status === 'SLI-002') {
-		alert(result.message);
+	if(result.status === 'LGN-200') {
+		if(result.contentType === 'OBJECT') {
+			alert(result.content.message);
+			location.href = '/';
+		}
+	} else if(result.status === 'LGN-400') {
+		if(result.contentType === 'STRING') {
+			alert(result.content);
+		}
 	} else {
 		alert('시스템 에러 발생');
 	}
