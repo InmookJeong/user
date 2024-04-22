@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+
+        <!-- css files -->
+        <link rel="stylesheet" type="text/css" href="./css/default.css" />
+
+        <style>
+            .vertical-division {
+                width: 1px;
+                border-left: 1px solid #ddd;
+            }
+        </style>
+	</head>
+	<body>
+        <header class="h-4rem pt-1 pb-1 pl-2 pr-2">
+            <div>
+                <div class="float-left">USER</div>
+                <nav class="float-right">
+                    <a class="p1">About</a>
+                    <a class="p1">Login</a>
+                    <a class="p1">SignIn</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="d-flex justify-content-center mt-6">
+            <section class="h-35rem text-center">
+                <h1 class="pb-2">Login</h1>
+                
+                <form class="box w-20rem h-15rem p2 login-form">
+                    <input type="text" id="userId" name="userId" class="w-95p h-2rem mt-1 mb-2" placeholder="아이디 입력" />
+                    <input type="password" id="password" name="password" class="w-95p h-2rem mb-2" placeholder="비밀번호 입력" />
+
+                    <button class="w-100p h-2rem mb-1">로그인</button>
+
+                    <table class="w-100p">
+                        <tr>
+                            <td class="w-33p">아이디 찾기</td>
+                            <td class="w-33p">비밀번호 찾기</td>
+                            <td class="w-33p">회원가입</td>
+                        </tr>
+                    </table>
+                    <!-- <div class="w-100p">
+                        <a>아이디 찾기</a>
+                        <a>비밀번호 찾기</a>
+                        <a>회원가입</a>
+                    </div> -->
+                </form>
+            </section>
+        </main>
+
+        <footer class="p-absolute w-100p h-3rem pt-1 bottom-0 text-center">
+            Copyrightⓒ JIM. All Rights Reserved.
+        </footer>
+	</body>
+</html>

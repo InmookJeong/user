@@ -1,0 +1,111 @@
+/* font-size {n}px */
+.font-10px {
+    font-size: 10px;
+}
+
+.font-15px {
+    font-size: 15px;
+}
+
+.font-20px {
+    font-size: 20px;
+}
+
+.font-25px {
+    font-size: 25px;
+}
+
+.font-30px {
+    font-size: 30px;
+}
+
+.font-35px {
+    font-size: 35px;
+}
+
+.font-40px {
+    font-size: 40px;
+}
+
+.font-45px {
+    font-size: 45px;
+}
+
+.font-50px {
+    font-size: 50px;
+}
+
+/* font-size {n}rem */
+.font-1rem {
+    font-size: 1rem;
+}
+
+.font-2rem {
+    font-size: 2rem;
+}
+
+.font-3rem {
+    font-size: 3rem;
+}
+
+.font-4rem {
+    font-size: 4rem;
+}
+
+.font-5rem {
+    font-size: 5rem;
+}
+
+.font-6rem {
+    font-size: 6rem;
+}
+
+.font-7rem {
+    font-size: 7rem;
+}
+
+.font-8rem {
+    font-size: 8rem;
+}
+
+.font-9rem {
+    font-size: 9rem;
+}
+
+.font-10rem {
+    font-size: 10rem;
+}
+
+/* font-weight */
+.font-bold {
+    font-weight: bold;
+}
+
+.font-bolder {
+    font-weight: bolder;
+}
+
+.font-lighter {
+    font-weight: lighter;
+}
+
+/* text-align */
+.text-center {
+    text-align: center;
+}
+
+.text-end {
+    text-align: end;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-start {
+    text-align: start;
+}

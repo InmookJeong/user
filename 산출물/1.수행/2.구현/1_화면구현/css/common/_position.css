@@ -1,0 +1,70 @@
+/* Position */
+.position-absolute {
+    position: absolute;
+}
+
+.position-fixed {
+    position: fixed;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-static {
+    position: static;
+}
+
+.position-sticky {
+    position: sticky;
+}
+
+/* Top */
+.top-0 {
+    top: 0;
+}
+
+.top-1 {
+    top: 1;
+}
+
+.top-2 {
+    top: 2;
+}
+
+.top-3 {
+    top: 3;
+}
+
+.top-4 {
+    top: 4;
+}
+
+.top-5 {
+    top: 5;
+}
+
+/* Bottom */
+.bottom-0 {
+    bottom: 0;
+}
+
+.bottom-1 {
+    bottom: 1;
+}
+
+.bottom-2 {
+    bottom: 2;
+}
+
+.bottom-3 {
+    bottom: 3;
+}
+
+.bottom-4 {
+    bottom: 4;
+}
+
+.bottom-5 {
+    bottom: 5;
+}
