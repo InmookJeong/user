@@ -1,0 +1,102 @@
+/* border-color */
+.border-black,
+.border-black-hover:hover {
+    border-color: black !important;
+}
+
+.border-blue,
+.border-blue-hover:hover {
+    border-color: blue !important;
+}
+
+.border-red,
+.border-red-hover:hover {
+    border-color: red !important;
+}
+
+.border-green,
+.border-green-hover:hover {
+    border-color: green !important;
+}
+
+.border-yellow,
+.border-yellow-hover:hover {
+    border-color: yellow !important;
+}
+
+.border-purple,
+.border-purple-hover:hover {
+    border-color: purple !important;
+}
+
+.border-gray,
+.border-gray-hover:hover {
+    border-color: gray !important;
+}
+
+.border-aqua,
+.border-aqua-hover:hover {
+    border-color: aqua !important;
+}
+
+.border-lime,
+.border-lime-hover:hover {
+    border-color: lime !important;
+}
+
+.border-olive,
+.border-olive-hover:hover {
+    border-color: olive !important;
+}
+
+/* border-width */
+.border-0,
+.border-0-hover:hover {
+    border-width: 0px;
+}
+
+.border-1px,
+.border-1px-hover:hover {
+    border-width: 1px;
+}
+
+.border-2px,
+.border-2px-hover:hover {
+    border-width: 2px;
+}
+
+.border-3px,
+.border-3px-hover:hover {
+    border-width: 3px;
+}
+
+.border-4px,
+.border-4px-hover:hover {
+    border-width: 4px;
+}
+
+.border-5px,
+.border-5px-hover:hover {
+    border-width: 5px;
+}
+
+/* border position */
+.border-left-solid,
+.border-left-solid-hover:hover {
+    border-left: solid;
+}
+
+.border-riht-solid,
+.border-riht-solid-hover:hover {
+    border-right: solid;
+}
+
+.border-top-solid,
+.border-top-solid-hover:hover {
+    border-top: solid;
+}
+
+.border-bottom-solid,
+.border-bottom-solid-hover:hover {
+    border-bottom: solid;
+}

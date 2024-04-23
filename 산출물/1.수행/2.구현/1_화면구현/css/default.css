@@ -1,4 +1,6 @@
+@import url('./common/_border.css');
 @import url('./common/_color.css');
+@import url('./common/_cursor.css');
 @import url('./common/_display.css');
 @import url('./common/_font.css');
 @import url('./common/_height.css');
