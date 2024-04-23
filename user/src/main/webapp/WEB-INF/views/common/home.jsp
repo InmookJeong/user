@@ -12,7 +12,7 @@
 	<body>
 		<header class="h-4rem pt-1 pb-1 pl-2 pr-2">
 			<div>
-				<div class="float-left">USER</div>
+				<div id="logo" class="float-left cursor-default">USER</div>
 				<nav class="menu-group float-right">
 					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple cursor-pointer" data-btn-name="about">About</a>
 					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple cursor-pointer" data-btn-name="login">Login</a>

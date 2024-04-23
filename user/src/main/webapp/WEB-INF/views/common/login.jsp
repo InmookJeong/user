@@ -5,28 +5,58 @@
 		<meta charset="UTF-8">
 		<title>로그인</title>
 		
+		<!-- css files -->
+		<link rel="stylesheet" type="text/css" href="./css/default.css" />
+		
 		<script src="${pageContext.request.contextPath}/js/crypto-js/3.1.2/core-min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/crypto-js/3.1.2/sha256-min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/util/http/http-util.js"></script>
 	</head>
 	<body>
-		<header>로그인</header>
-		<section>
-			<section>
-				아이디 입력 : <input type="text" id="userId" name="userId" value="" />
+		<header class="h-4rem pt-1 pb-1 pl-2 pr-2">
+			<div>
+				<div id="logo" class="float-left cursor-pointer">USER</div>
+				<nav class="float-right">
+					<a class="p1">About</a>
+					<a class="p1">Login</a>
+					<a class="p1">SignUp</a>
+				</nav>
+			</div>
+		</header>
+		
+		<main class="d-flex justify-content-center mt-6">
+			<section class="h-35rem text-center">
+				<h1 class="pb-2">Login</h1>
+				
+				<form class="box w-20rem h-15rem p2 login-form">
+					<input type="text" id="userId" name="userId" class="w-95p h-2rem mt-1 mb-2" placeholder="아이디 입력" value="" />
+					<input type="password" id="password" name="password" class="w-95p h-2rem mb-2" placeholder="비밀번호 입력" value="" />
+					
+					<button type="button" id="loginBtn" name="loginBtn" class="w-100p h-2rem mb-1" onclick="login()">로그인</button>
+					
+					<table class="w-100p">
+						<tr>
+							<td class="w-33p">아이디 찾기</td>
+							<td class="w-33p">비밀번호 찾기</td>
+							<td class="w-33p">회원가입</td>
+						</tr>
+					</table>
+				</form>
 			</section>
-			
-			<section>
-				비밀번호 입력 : <input type="password" id="password" name="password" value="" />
-			</section>
-		</section>
-		<footer>
-			<button type="button" id="loginBtn" name="loginBtn" onclick="login()">LOGIN</button>
+		</main>
+		
+		<footer class="position-absolute w-100p h-3rem pt-1 bottom-0 text-center">
+			Copyrightⓒ JIM. All Rights Reserved.
 		</footer>
 	</body>
 </html>
 
 <script>
+const logo = document.getElementById('logo');
+logo.addEventListener('click', () => {
+	location.href = "/";
+});
+
 async function login() {
 	const userId = document.getElementById('userId');
 	const password = document.getElementById('password');
