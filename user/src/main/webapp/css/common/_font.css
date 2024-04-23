@@ -1,0 +1,133 @@
+/* font-size {n}px */
+.font-10px,
+.font-10px-hover:hover {
+	font-size: 10px;
+}
+
+.font-15px,
+.font-15px-hover:hover {
+	font-size: 15px;
+}
+
+.font-20px,
+.font-20px-hover:hover {
+	font-size: 20px;
+}
+
+.font-25px,
+.font-25px-hover:hover {
+	font-size: 25px;
+}
+
+.font-30px,
+.font-30px-hover:hover {
+	font-size: 30px;
+}
+
+.font-35px,
+.font-35px-hover:hover {
+	font-size: 35px;
+}
+
+.font-40px,
+.font-40px-hover:hover {
+	font-size: 40px;
+}
+
+.font-45px,
+.font-45px-hover:hover {
+	font-size: 45px;
+}
+
+.font-50px,
+.font-50px-hover:hover {
+	font-size: 50px;
+}
+
+/* font-size {n}rem */
+.font-1rem,
+.font-1rem-hover:hover {
+	font-size: 1rem;
+}
+
+.font-2rem,
+.font-2rem-hover:hover {
+	font-size: 2rem;
+}
+
+.font-3rem,
+.font-3rem-hover:hover {
+	font-size: 3rem;
+}
+
+.font-4rem,
+.font-4rem-hover:hover {
+	font-size: 4rem;
+}
+
+.font-5rem,
+.font-5rem-hover:hover {
+	font-size: 5rem;
+}
+
+.font-6rem,
+.font-6rem-hover:hover {
+	font-size: 6rem;
+}
+
+.font-7rem,
+.font-7rem-hover:hover {
+	font-size: 7rem;
+}
+
+.font-8rem,
+.font-8rem-hover:hover {
+	font-size: 8rem;
+}
+
+.font-9rem,
+.font-9rem-hover:hover {
+	font-size: 9rem;
+}
+
+.font-10rem,
+.font-10rem-hover:hover {
+	font-size: 10rem;
+}
+
+/* font-weight */
+.font-bold,
+.font-bold-hover:hover {
+	font-weight: bold;
+}
+
+.font-bolder,
+.font-bolder-hover:hover {
+	font-weight: bolder;
+}
+
+.font-lighter,
+.font-lighter-hover:hover {
+	font-weight: lighter;
+}
+
+/* text-align */
+.text-center {
+	text-align: center;
+}
+
+.text-end {
+	text-align: end;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-start {
+	text-align: start;
+}

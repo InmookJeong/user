@@ -1,0 +1,14 @@
+.color-white,
+.color-white-hover:hover {
+	color: white;
+}
+
+.color-gray,
+.color-gray-hover:hover {
+	color: gray;
+}
+
+.color-black,
+.color-black-hover:hover {
+	color: black;
+}

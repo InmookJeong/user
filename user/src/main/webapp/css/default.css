@@ -1,0 +1,45 @@
+@import url('./common/_border.css');
+@import url('./common/_color.css');
+@import url('./common/_cursor.css');
+@import url('./common/_display.css');
+@import url('./common/_font.css');
+@import url('./common/_height.css');
+@import url('./common/_margin.css');
+@import url('./common/_padding.css');
+@import url('./common/_position.css');
+@import url('./common/_shape.css');
+@import url('./common/_width.css');
+
+/* Default css */
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+/* Float */
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+/* item align */
+.items-center {
+	align-items: center;
+}
+
+.items-end {
+	align-items: end;
+}
+
+.items-start {
+	align-items: start;
+}
