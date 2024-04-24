@@ -7,7 +7,7 @@
 		<title>Home</title>
 
 		<!-- css files -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/resources/css/default.css" />
 	</head>
 	<body>
 		<header class="h-4rem pt-1 pb-1 pl-2 pr-2">

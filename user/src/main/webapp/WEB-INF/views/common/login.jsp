@@ -6,11 +6,11 @@
 		<title>로그인</title>
 		
 		<!-- css files -->
-		<link rel="stylesheet" type="text/css" href="./css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/resources/css/default.css" />
 		
-		<script src="${pageContext.request.contextPath}/js/crypto-js/3.1.2/core-min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/crypto-js/3.1.2/sha256-min.js"></script>
-		<script src="${pageContext.request.contextPath}/js/util/http/http-util.js"></script>
+		<script src="/resources/js/crypto-js/3.1.2/core-min.js"></script>
+		<script src="/resources/js/crypto-js/3.1.2/sha256-min.js"></script>
+		<script src="/resources/js/util/http/http-util.js"></script>
 	</head>
 	<body>
 		<header class="h-4rem pt-1 pb-1 pl-2 pr-2">
@@ -18,7 +18,7 @@
 				<div id="logo" class="float-left cursor-pointer">USER</div>
 				<nav class="float-right">
 					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer">About</a>
-					<a class="p1 font-bolder border-bottom-solid border-5px border-purple">Login</a>
+					<a class="p1 font-bolder border-bottom-solid border-5px border-purple cursor-default">Login</a>
 					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer">SignUp</a>
 				</nav>
 			</div>
