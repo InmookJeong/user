@@ -17,9 +17,9 @@
 			<div>
 				<div id="logo" class="float-left cursor-pointer">USER</div>
 				<nav class="float-right">
-					<a class="p1">About</a>
-					<a class="p1">Login</a>
-					<a class="p1">SignUp</a>
+					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer">About</a>
+					<a class="p1 font-bolder border-bottom-solid border-5px border-purple">Login</a>
+					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer">SignUp</a>
 				</nav>
 			</div>
 		</header>
