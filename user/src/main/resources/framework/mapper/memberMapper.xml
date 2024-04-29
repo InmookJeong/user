@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.mook.user.dao.MemberMapper">
+	
+	<select id="countByLoginDto" parameterType="kr.mook.user.common.dto.LoginDTO" resultType="int">
+		/** MemberMapper.countByLoginDto */
+		SELECT
+			COUNT(M.id)
+		FROM
+			MEMBER M
+		WHERE
+			M.userId = #{userId}
+			AND M.password = #{password}
+	</select>
+	
+</mapper>
