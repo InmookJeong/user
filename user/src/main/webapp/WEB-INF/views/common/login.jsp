@@ -8,6 +8,7 @@
 		<!-- css files -->
 		<link rel="stylesheet" type="text/css" href="/resources/css/default.css" />
 		
+		<!-- Script files -->
 		<script src="/resources/js/crypto-js/3.1.2/core-min.js"></script>
 		<script src="/resources/js/crypto-js/3.1.2/sha256-min.js"></script>
 		<script src="/resources/js/util/http/http-util.js"></script>
@@ -19,7 +20,7 @@
 				<nav class="float-right">
 					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer">About</a>
 					<a class="p1 font-bolder border-bottom-solid border-5px border-purple cursor-default">Login</a>
-					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer">SignUp</a>
+					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer" data-btn-name="sign-up">SignUp</a>
 				</nav>
 			</div>
 		</header>
@@ -36,9 +37,9 @@
 					
 					<table class="w-100p">
 						<tr>
-							<td class="w-33p">아이디 찾기</td>
-							<td class="w-33p">비밀번호 찾기</td>
-							<td class="w-33p">회원가입</td>
+							<td class="w-33p cursor-default font-bold-hover">아이디 찾기</td>
+							<td class="w-33p cursor-default font-bold-hover">비밀번호 찾기</td>
+							<td class="menu-link w-33p cursor-pointer font-bold-hover" data-btn-name="sign-up">회원가입</td>
 						</tr>
 					</table>
 				</form>
@@ -56,6 +57,14 @@ const logo = document.getElementById('logo');
 logo.addEventListener('click', () => {
 	location.href = "/";
 });
+
+const menuLink = document.getElementsByClassName('menu-link');
+for (var i = 0; i < menuLink.length; i++) {
+	menuLink[i].addEventListener('click', (event) => {
+		const btnName = event.target.dataset.btnName;
+		if(btnName === 'sign-up') location.href = '/' + btnName;
+	});
+}
 
 async function login() {
 	const userId = document.getElementById('userId');

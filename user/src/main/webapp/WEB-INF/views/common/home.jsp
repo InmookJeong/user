@@ -39,6 +39,7 @@ for (var i = 0; i < menuLink.length; i++) {
 	menuLink[i].addEventListener('click', (event) => {
 		const btnName = event.target.dataset.btnName;
 		if(btnName === 'login') location.href = '/' + btnName;
+		if(btnName === 'sign-up') location.href = '/' + btnName;
 	});
 }
 </script>
