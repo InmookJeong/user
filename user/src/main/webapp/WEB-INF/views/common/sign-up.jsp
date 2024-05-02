@@ -91,12 +91,11 @@ async function focusOut(target) {
 	const targetTag = document.getElementById(target);
 	const targetData = targetTag.value;
 	const tagName = targetTag.dataset.tagName;
-	const url = '/resource/user/check-' + target + '?' + target + '='+ targetData;
+	const url = '/check-' + target + '?' + target + '='+ targetData;
 	const result = await httpUtil.get(url, httpUtil.RETURN_TYPE.TEXT);
 	if(result == 0) {
 		alert(tagName + '이(가) 중복됩니다.');
 	}
-	console.log('result : ', result);
 }
 
 async function signup() {

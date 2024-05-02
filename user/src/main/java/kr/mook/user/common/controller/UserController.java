@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.mook.user.common.dto.LoginDTO;
@@ -117,6 +118,63 @@ public class UserController {
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.COMMON_HOME;
 		return UserViewConstatns.COMMON_SIGNUP;
+	}
+	
+	/**
+	 * This method checks whether the userId entered by the user when signing up has already been registered.
+	 * 
+	 * @param request
+	 * @param userId
+	 * @return Returns 1 if the userId does not exist, and 0 if it exists.
+	 * @since 2024.03.13
+	 * @author In-mook, Jeong
+	 */
+	@RequestMapping(value = "/check-userId", method = RequestMethod.GET)
+	@ResponseBody
+	public int checkUserId(HttpServletRequest request, @RequestParam("userId") String userId) {
+		if(this.userService.existUserId(userId)) {
+			return 0;
+		}
+		
+		return 1;
+	}
+	
+	/**
+	 * This method checks whether the Email entered by the user when signing up has already been registered.
+	 * 
+	 * @param request
+	 * @param email
+	 * @return Returns 1 if the email does not exist, and 0 if it exists.
+	 * @since 2024.03.13
+	 * @author In-mook, Jeong
+	 */
+	@RequestMapping(value = "/check-email", method = RequestMethod.GET)
+	@ResponseBody
+	public int checkEmail(HttpServletRequest request, @RequestParam("email") String email) {
+		if(this.userService.existEmail(email)) {
+			return 0;
+		}
+		
+		return 1;
+	}
+	
+	/**
+	 * This method checks whether the phone number entered by the user when signing up has already been registered.
+	 * 
+	 * @param request
+	 * @param phone
+	 * @return Returns true if the phone number does not exist, and false if it exists.
+	 * @since 2024.03.13
+	 * @author In-mook, Jeong
+	 */
+	@RequestMapping(value = "/check-phone", method = RequestMethod.GET)
+	@ResponseBody
+	public int checkPhone(HttpServletRequest request, @RequestParam("phone") String phone) {
+		if(this.userService.existPhoneNumber(phone)) {
+			return 0;
+		}
+		
+		return 1;
 	}
 	
 	/**

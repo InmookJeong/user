@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.mook.user.common.dto.LoginDTO;
@@ -12,6 +13,7 @@ import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
 import kr.mook.user.constants.StatusEnum;
 import kr.mook.user.constants.UserMessageConstants;
+import kr.mook.user.member.dao.MemberDao;
 import kr.mook.user.member.dto.MemberDTO;
 import kr.mook.user.util.data.RandomStringUtils;
 
@@ -27,10 +29,14 @@ public class UserServiceImpl implements UserService {
 	
 	// UserService Logger
 	private final Logger _log = Logger.getLogger(UserService.class.getName());
+	
+	@Autowired
+	private MemberDao memberDao;
 
 	@Override
 	public UserResultDTO login(LoginDTO loginDTO) {
 		UserResultDTO userResultDTO = new UserResultDTO("Log-in");
+		System.out.println("user count : " + this.memberDao.countByLoginDto(loginDTO));
 		// password : test1234
 		String encryptPw = "937e8d5fbb48bd4949536cd65b8d35c426b80d2f830c5c308e2cdec422ae2244";
 		if(loginDTO.getUserId().equals("test") 
