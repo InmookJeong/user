@@ -1,9 +1,12 @@
+-- DROP TABLE MEMBER;
+
 CREATE TABLE MEMBER (
 	id bigint comment '아이디',
     userId VARCHAR(50) NOT NULL UNIQUE comment '사용자 아이디',
     password VARCHAR(200) NOT NULL comment '비밀번호',
     name VARCHAR(1000) NOT NULL comment '이름',
     birth VARCHAR(10) NOT NULL comment '생년월일',
+    gender VARCHAR(10) NOT NULL comment '성별',
     phone VARCHAR(20) NOT NULL UNIQUE comment '휴대전화번호',
     email VARCHAR(100) NOT NULL UNIQUE comment '이메일',
     nation VARCHAR(10) NOT NULL comment '국가',
