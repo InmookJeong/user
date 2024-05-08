@@ -99,6 +99,8 @@ async function focusOut(target) {
 }
 
 async function signup() {
+	if(!validSignUpData()) return;
+	
 	const httpUtil = HttpUtil();
 	
 	const userId = document.getElementById('userId').value;
@@ -136,7 +138,42 @@ async function signup() {
 	await httpUtil.post('/sign-up', sendData, httpUtil.RETURN_TYPE.JSON);
 }
 
-function home() {
-	location.href = '/';
+function validSignUpData() {
+	if(!document.getElementById('userId').value) {
+		alert('아이디를 입력해주세요.');
+		return false;
+	}
+	
+	if(!document.getElementById('password').value) {
+		alert('비밀번호를 입력해주세요.');
+		return false;
+	}
+	
+	if(!document.getElementById('name').value) {
+		alert('이름을 입력해주세요.');
+		return false;
+	}
+	
+	if(!document.querySelector('input[name="gender"]:checked')) {
+		alert('성별을 선택해주세요.');
+		return false;
+	}
+	
+	if(!document.getElementById('birth').value) {
+		alert('생년월일을 입력해주세요.');
+		return false;
+	}
+	
+	if(!document.getElementById('phone').value) {
+		alert('전화번호를 입력해주세요.');
+		return false;
+	}
+	
+	if(!document.getElementById('email').value) {
+		alert('이메일을 입력해주세요.');
+		return false;
+	}
+	
+	return true;
 }
 </script>
