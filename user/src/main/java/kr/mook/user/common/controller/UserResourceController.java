@@ -37,34 +37,6 @@ public class UserResourceController {
 	@Autowired
 	private UserService userService;
 	
-	
-	/**
-	 * This method processes membership registration by storing the information entered by the user.
-	 * 
-	 * @param request
-	 * @param memberDTO
-	 * @return
-	 * @since 2024.03.13
-	 * @author In-mook, Jeong
-	 */
-	@RequestMapping(value = "/sign-up", method = RequestMethod.POST)
-	@ResponseBody
-	public UserResultDTO signUp(HttpServletRequest request, @RequestBody MemberDTO memberDTO) {
-		_log.info("##### memberDTO : "+ memberDTO.toString());
-		UserResultDTO userResourceResultDTO = new UserResultDTO();
-		
-		if(this.userService.signUp(memberDTO)) {
-			userResourceResultDTO.setStatus(UserResourceConstants.STATUS_SIGNUP_SUCCESS);
-			userResourceResultDTO.setMessage(UserResourceConstants.MESSAGE_SIGNUP_SUCCESS);
-		} else {
-			userResourceResultDTO.setStatus(UserResourceConstants.STATUS_SIGNUP_FAILED);
-			userResourceResultDTO.setMessage(UserResourceConstants.MESSAGE_SIGNUP_FAILED);
-		}
-		
-		_log.info("##### userResourceResultDTO : "+ userResourceResultDTO.toString());
-		return userResourceResultDTO;
-	}
-	
 	/**
 	 * This method provides the function to find the userId.
 	 * 

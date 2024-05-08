@@ -3,6 +3,7 @@ package kr.mook.user.common.service;
 import java.util.List;
 
 import kr.mook.user.common.dto.LoginDTO;
+import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.member.dto.MemberDTO;
 
@@ -79,7 +80,7 @@ public interface UserService {
 	 * @since 2024.03.13
 	 * @author In-mook, Jeong
 	 */
-	public boolean signUp(MemberDTO memberDTO);
+	public UserResultDTO signUp(SignUpDTO signUpDTO);
 	
 	/**
 	 * This method provides the function to find the userId.<br/>

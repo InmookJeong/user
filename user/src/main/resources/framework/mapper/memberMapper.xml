@@ -16,4 +16,87 @@
 			AND M.password = #{password}
 	</select>
 	
+	<select id="countByUserId" parameterType="String" resultType="int">
+		/** MemberMapper.countByUserId */
+		SELECT
+			COUNT(M.id)
+		FROM
+			MEMBER M
+		WHERE
+			M.userId = #{userId}
+	</select>
+	
+	<select id="countByPhone" parameterType="String" resultType="int">
+		/** MemberMapper.countByPhone */
+		SELECT
+			COUNT(M.id)
+		FROM
+			MEMBER M
+		WHERE
+			M.phone = #{phone}
+	</select>
+	
+	<select id="countByEmail" parameterType="String" resultType="int">
+		/** MemberMapper.countByEmail */
+		SELECT
+			COUNT(M.id)
+		FROM
+			MEMBER M
+		WHERE
+			M.email = #{email}
+	</select>
+	
+	<select id="getNextId" resultType="int">
+		/** MemberMapper.getNextId */
+		SELECT
+			CASE
+				WHEN COUNT(M.id) > 0
+					THEN MAX(M.id)+1
+				ELSE 1
+			END
+		FROM
+			MEMBER M
+	</select>
+	
+	<insert id="insertMember" parameterType="kr.mook.user.common.dto.SignUpDTO">
+		/** MemberMapper.insertMember */
+		INSERT INTO MEMBER (
+			id,
+			userId,
+			password,
+			name,
+			birth,
+			gender,
+			phone,
+			email,
+			nation,
+			postNumber,
+			address,
+			addressDetail,
+			createMemberId,
+			createDate,
+			isActive,
+			isTempPassword,
+			isAdmin
+		) VALUES (
+			#{id},
+			#{userId},
+			#{password},
+			#{name},
+			#{birth},
+			#{gender},
+			#{phone},
+			#{email},
+			#{nation},
+			#{postNumber},
+			#{address},
+			#{addressDetail},
+			#{id},
+			now(),
+			true,
+			false,
+			false
+		)
+	</insert>
+	
 </mapper>

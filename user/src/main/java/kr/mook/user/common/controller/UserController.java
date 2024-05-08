@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.mook.user.common.dto.LoginDTO;
+import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
 import kr.mook.user.constants.UserViewConstatns;
@@ -118,6 +119,23 @@ public class UserController {
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.COMMON_HOME;
 		return UserViewConstatns.COMMON_SIGNUP;
+	}
+	
+	/**
+	 * This method processes membership registration by storing the information entered by the user.
+	 * 
+	 * @param request
+	 * @param memberDTO
+	 * @return
+	 * @since 2024.03.13
+	 * @author In-mook, Jeong
+	 */
+	@RequestMapping(value = "/sign-up", method = RequestMethod.POST)
+	@ResponseBody
+	public UserResultDTO signUp(HttpServletRequest request, @RequestBody SignUpDTO signUpDTO) {
+		_log.info("##### Execute login processing." + signUpDTO.toString());
+		UserResultDTO userResultDTO = this.userService.signUp(signUpDTO);
+		return userResultDTO;
 	}
 	
 	/**

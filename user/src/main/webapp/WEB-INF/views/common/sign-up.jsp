@@ -44,9 +44,9 @@
 						<input type="radio" class="h-2rem mt-1" name="gender" value="W" data-tag-name="성별" />여자
 					</label>
 					
-					<input type="text" class="w-95p h-2rem mt-1" id="birth" name="birth" value="" placeholder="생년월일 입력" data-tag-name="생년월일" />
-					<input type="text" class="w-95p h-2rem mt-1" id="phone" name="phone" value="" placeholder="휴대전화번호 입력" data-tag-name="휴대전화번호" />
-					<input type="email" class="w-95p h-2rem mt-1" id="email" name="email" value="" placeholder="이메일 입력" data-tag-name="이메일" />
+					<input type="date" class="w-95p h-2rem mt-1" id="birth" name="birth" value="" placeholder="생년월일 입력" data-tag-name="생년월일" />
+					<input type="tel" class="w-95p h-2rem mt-1" id="phone" name="phone" value="" placeholder="휴대전화번호 입력" onfocusout="focusOut('phone')" data-tag-name="휴대전화번호" />
+					<input type="email" class="w-95p h-2rem mt-1" id="email" name="email" value="" placeholder="이메일 입력" onfocusout="focusOut('email')" data-tag-name="이메일" />
 					
 					<!-- <input type="text" class="w-95p h-2rem mt-1" id="nation" name="nation" value="" placeholder="국가 입력" data-tag-name="국가" /> -->
 					<select class="w-95p h-2rem mt-1" id="nation" name="nation">
@@ -111,9 +111,9 @@ async function signup() {
 	
 	const cryptoPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
 	const name = document.getElementById('name').value;
-	const gender = document.getElementById('gender').value;
+	const gender = document.querySelector('input[name="gender"]:checked').value;
 	const birth = document.getElementById('birth').value;
-	const phoneNumber = document.getElementById('phoneNumber').value;
+	const phone = document.getElementById('phone').value;
 	const email = document.getElementById('email').value;
 	const nation = document.getElementById('nation').value;
 	const postNumber = document.getElementById('postNumber').value;
@@ -126,17 +126,17 @@ async function signup() {
 		"name" : name,
 		"gender" : gender,
 		"birth" : birth,
-		"phoneNumber" : phoneNumber,
+		"phone" : phone,
 		"email" : email,
 		"nation" : nation,
 		"postNumber" : postNumber,
 		"address" : address,
 		"addressDetail" : addressDetail
 	}
-	await httpUtil.post('/resource/user/sign-up', sendData, httpUtil.RETURN_TYPE.JSON);
+	await httpUtil.post('/sign-up', sendData, httpUtil.RETURN_TYPE.JSON);
 }
 
 function home() {
-	location.href = '/user';
+	location.href = '/';
 }
 </script>

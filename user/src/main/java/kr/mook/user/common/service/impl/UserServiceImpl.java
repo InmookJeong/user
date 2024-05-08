@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.mook.user.common.dto.LoginDTO;
+import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultContentDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
@@ -87,7 +88,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean existUserId(String userId) {
-		if(userId.equals("test")) {
+		if(this.memberDao.countByUserId(userId) > 0) {
 			return true;
 		}
 		
@@ -96,7 +97,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean existEmail(String email) {
-		if(email.equals("test@test.com")) {
+		if(this.memberDao.countByEmail(email) > 0) {
 			return true;
 		}
 		
@@ -105,7 +106,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean existPhoneNumber(String phone) {
-		if(phone.equals("010-1234-5678")) {
+		if(this.memberDao.countByPhone(phone) > 0) {
 			return true;
 		}
 		
@@ -113,13 +114,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean signUp(MemberDTO memberDTO) {
-		if(memberDTO.getUserId().equals("test")
-			&& memberDTO.getEmail().equals("test@gmail.com")) {
-			return true;
-		}
+	public UserResultDTO signUp(SignUpDTO signUpDTO) {
+		int id = this.memberDao.getNextId();
+		signUpDTO.setId(id);
 		
-		return false;
+		this.memberDao.insertMember(signUpDTO);
+		System.out.println("회원가입 성공!!!!");
+		
+		UserResultDTO userResultDTO = new UserResultDTO("Sign-up");
+		
+		return userResultDTO;
 	}
 
 	@Override
