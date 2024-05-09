@@ -38,7 +38,7 @@
 					<table class="w-100p">
 						<tr>
 							<td class="menu-link w-33p cursor-pointer font-bold-hover" data-btn-name="find-id">아이디 찾기</td>
-							<td class="w-33p cursor-default font-bold-hover">비밀번호 찾기</td>
+							<td class="menu-link w-33p cursor-pointer font-bold-hover" data-btn-name="find-password">비밀번호 찾기</td>
 							<td class="menu-link w-33p cursor-pointer font-bold-hover" data-btn-name="sign-up">회원가입</td>
 						</tr>
 					</table>
@@ -64,6 +64,7 @@ for (var i = 0; i < menuLink.length; i++) {
 		const btnName = event.target.dataset.btnName;
 		if(btnName === 'sign-up') location.href = '/' + btnName;
 		if(btnName === 'find-id') location.href = '/' + btnName;
+		if(btnName === 'find-password') location.href = '/' + btnName;
 	});
 }
 
