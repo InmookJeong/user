@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.member.dao.MemberDao;
+import kr.mook.user.member.dto.MemberDTO;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -35,6 +36,11 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public int countByEmail(String email) {
 		return sqlSession.selectOne(NAME_SPACE+".countByEmail", email);
+	}
+	
+	@Override
+	public String selectUserId(MemberDTO memberDTO) {
+		return sqlSession.selectOne(NAME_SPACE+".selectUserId", memberDTO);
 	}
 	
 	@Override

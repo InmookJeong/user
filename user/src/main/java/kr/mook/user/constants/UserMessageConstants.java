@@ -30,5 +30,21 @@ public class UserMessageConstants {
 	public static final String STATUS_ENG_MESSAGE_LOGOUT_FAILED = "Failed Logout";
 	public static final String STATUS_KOR_MESSAGE_LOGOUT_FAILED = "로그아웃 실패";
 	
-
+	// SIGN-UP
+	public static final String MESSAGE_SIGN_UP_SUCCESS = "회원가입이 되었습니다.";
+	public static final String STATUS_ENG_MESSAGE_SIGN_UP_SUCCESS = "Success SignUp";
+	public static final String STATUS_KOR_MESSAGE_SIGN_UP_SUCCESS = "회원가입 성공";
+	
+	public static final String MESSAGE_SIGN_UP_FAILED = "회원가입이 되지 않았습니다. 관리자에게 문의해주세요.";
+	public static final String STATUS_ENG_MESSAGE_SIGN_UP_FAILED = "Failed SignUp";
+	public static final String STATUS_KOR_MESSAGE_SIGN_UP_FAILED = "회원가입 실패";
+	
+	// FIND-ID
+	public static final String MESSAGE_FIND_ID_SUCCESS = "아이디 찾기에 성공하였습니다..";
+	public static final String STATUS_ENG_MESSAGE_FIND_ID_SUCCESS = "Success Find ID";
+	public static final String STATUS_KOR_MESSAGE_FIND_ID_SUCCESS = "아이디 찾기 성공";
+	
+	public static final String MESSAGE_FIND_ID_FAILED = "아이디를 찾지 못했습니다.";
+	public static final String STATUS_ENG_MESSAGE_FIND_ID_FAILED = "Failed Find ID";
+	public static final String STATUS_KOR_MESSAGE_FIND_ID_FAILED = "아이디 찾기 실패";
 }

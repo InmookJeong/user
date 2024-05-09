@@ -46,6 +46,17 @@
 			M.email = #{email}
 	</select>
 	
+	<select id="selectUserId" parameterType="kr.mook.user.member.dto.MemberDTO" resultType="String">
+		/** MemberMapper.selectUserId */
+		SELECT
+			M.userId
+		FROM
+			MEMBER M
+		WHERE
+			M.name = #{name}
+			AND M.email = #{email}
+	</select>
+	
 	<select id="getNextId" resultType="int">
 		/** MemberMapper.getNextId */
 		SELECT

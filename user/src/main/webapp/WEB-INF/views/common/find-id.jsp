@@ -71,7 +71,11 @@ async function findId() {
 		"name" : name,
 		"email" : email
 	}
-	const result = await httpUtil.post('/find-id', sendData, httpUtil.RETURN_TYPE.TEXT);
-	console.log('result -> ', result);
+	const result = await httpUtil.post('/find-id', sendData, httpUtil.RETURN_TYPE.JSON);
+	if(result.status === 'FID-200') {
+		alert('아이디는 ' + result.content + '입니다.');
+	} else {
+		alert(result.content);
+	}
 }
 </script>

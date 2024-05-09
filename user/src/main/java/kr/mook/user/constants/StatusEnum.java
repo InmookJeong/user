@@ -29,6 +29,26 @@ public enum StatusEnum {
 		"LGT-400", 
 		UserMessageConstants.STATUS_ENG_MESSAGE_LOGOUT_FAILED,
 		UserMessageConstants.STATUS_KOR_MESSAGE_LOGOUT_FAILED
+	),
+	SIGNUP_SUCCESS(
+		"SNU-200", 
+		UserMessageConstants.STATUS_ENG_MESSAGE_SIGN_UP_SUCCESS,
+		UserMessageConstants.STATUS_KOR_MESSAGE_SIGN_UP_SUCCESS
+	),
+	SIGNUP_FAILED(
+		"SNU-400", 
+		UserMessageConstants.STATUS_ENG_MESSAGE_SIGN_UP_FAILED,
+		UserMessageConstants.STATUS_KOR_MESSAGE_SIGN_UP_FAILED
+	),
+	FIND_ID_SUCCESS(
+		"FID-200", 
+		UserMessageConstants.STATUS_ENG_MESSAGE_FIND_ID_SUCCESS,
+		UserMessageConstants.STATUS_KOR_MESSAGE_FIND_ID_SUCCESS
+	),
+	FIND_ID_FAILED(
+		"FID-400", 
+		UserMessageConstants.STATUS_ENG_MESSAGE_FIND_ID_FAILED,
+		UserMessageConstants.STATUS_KOR_MESSAGE_FIND_ID_FAILED
 	);
 	
 	// Fields

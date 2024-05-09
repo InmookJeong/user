@@ -2,6 +2,7 @@ package kr.mook.user.member.dao;
 
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.dto.SignUpDTO;
+import kr.mook.user.member.dto.MemberDTO;
 
 public interface MemberDao {
 	
@@ -12,6 +13,8 @@ public interface MemberDao {
 	public int countByPhone(String phone);
 	
 	public int countByEmail(String email);
+	
+	public String selectUserId(MemberDTO memberDTO);
 	
 	public int getNextId();
 	

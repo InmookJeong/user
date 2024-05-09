@@ -115,25 +115,55 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserResultDTO signUp(SignUpDTO signUpDTO) {
+		UserResultDTO userResultDTO = new UserResultDTO("Sign-up");
 		int id = this.memberDao.getNextId();
 		signUpDTO.setId(id);
 		
-		this.memberDao.insertMember(signUpDTO);
-		System.out.println("회원가입 성공!!!!");
-		
-		UserResultDTO userResultDTO = new UserResultDTO("Sign-up");
+		try {
+			this.memberDao.insertMember(signUpDTO);
+			userResultDTO.setStatus(
+				StatusEnum.SIGNUP_SUCCESS.getStatus(),
+				StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
+				StatusEnum.SIGNUP_SUCCESS.getStatusKorMessage()
+			);
+			
+			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
+		} catch (Exception e) {
+			userResultDTO.setStatus(
+				StatusEnum.SIGNUP_FAILED.getStatus(),
+				StatusEnum.SIGNUP_FAILED.getStatusEngMessage(),
+				StatusEnum.SIGNUP_FAILED.getStatusKorMessage()
+			);
+			
+			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_FAILED);
+		}
 		
 		return userResultDTO;
 	}
 
 	@Override
-	public String findId(MemberDTO memberDTO) {
-		if(memberDTO.getName().equals("홍길동")
-			&& memberDTO.getEmail().equals("test@gmail.com")) {
-			return "test";
+	public UserResultDTO getUserId(MemberDTO memberDTO) {
+		UserResultDTO userResultDTO = new UserResultDTO("Find-ID");
+		String userId = this.memberDao.selectUserId(memberDTO);
+		if(userId != null && !userId.isEmpty()) {
+			userResultDTO.setStatus(
+				StatusEnum.FIND_ID_SUCCESS.getStatus(),
+				StatusEnum.FIND_ID_SUCCESS.getStatusEngMessage(),
+				StatusEnum.FIND_ID_SUCCESS.getStatusKorMessage()
+			);
+			
+			userResultDTO.setContent("STRING", userId);
+		} else {
+			userResultDTO.setStatus(
+					StatusEnum.FIND_ID_FAILED.getStatus(),
+					StatusEnum.FIND_ID_FAILED.getStatusEngMessage(),
+					StatusEnum.FIND_ID_FAILED.getStatusKorMessage()
+					);
+			
+			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_FIND_ID_FAILED);
 		}
 		
-		return "User not found.";
+		return userResultDTO;
 	}
 
 	@Override
