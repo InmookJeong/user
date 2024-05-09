@@ -38,22 +38,6 @@ public class UserResourceController {
 	private UserService userService;
 	
 	/**
-	 * This method provides the function to find the userId.
-	 * 
-	 * @param request
-	 * @param memberDTO
-	 * @return
-	 * @since 2024.03.14
-	 * @author In-mook, Jeong
-	 */
-	@RequestMapping(value = "/find-id", method = RequestMethod.POST)
-	@ResponseBody
-	public String findId(HttpServletRequest request, @RequestBody MemberDTO memberDTO) {
-		_log.info("##### memberDTO : "+ memberDTO.toString());
-		return this.userService.findId(memberDTO);
-	}
-	
-	/**
 	 * This method provides the ability to issue a temporary password when the user forgets the password.<br/>
 	 * The temporary password consists of upper and lower case English letters, numbers, and special characters.
 	 * 

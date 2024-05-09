@@ -19,6 +19,7 @@ import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
 import kr.mook.user.constants.UserViewConstatns;
+import kr.mook.user.member.dto.MemberDTO;
 import kr.mook.user.util.data.DataUtils;
 
 /**
@@ -209,6 +210,22 @@ public class UserController {
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.COMMON_HOME;
 		return UserViewConstatns.COMMON_FIND_ID;
+	}
+	
+	/**
+	 * This method provides the function to find the userId.
+	 * 
+	 * @param request
+	 * @param memberDTO
+	 * @return
+	 * @since 2024.03.14
+	 * @author In-mook, Jeong
+	 */
+	@RequestMapping(value = "/find-id", method = RequestMethod.POST)
+	@ResponseBody
+	public UserResultDTO findId(HttpServletRequest request, @RequestBody MemberDTO memberDTO) {
+		_log.info("##### memberDTO : "+ memberDTO.toString());
+		return this.userService.getUserId(memberDTO);
 	}
 	
 	/**
