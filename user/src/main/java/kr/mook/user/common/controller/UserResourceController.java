@@ -38,23 +38,6 @@ public class UserResourceController {
 	private UserService userService;
 	
 	/**
-	 * This method provides the ability to issue a temporary password when the user forgets the password.<br/>
-	 * The temporary password consists of upper and lower case English letters, numbers, and special characters.
-	 * 
-	 * @param request
-	 * @param memberDTO
-	 * @return
-	 * @since 2024.03.14
-	 * @author In-mook, Jeong
-	 */
-	@RequestMapping(value = "/find-password", method = RequestMethod.POST)
-	@ResponseBody
-	public String findPassword(HttpServletRequest request, @RequestBody MemberDTO memberDTO) {
-		_log.info("##### memberDTO : "+ memberDTO.toString());
-		return this.userService.findPassword(memberDTO);
-	}
-	
-	/**
 	 * This method provides the ability to query the user list.
 	 * 
 	 * @param request
