@@ -101,7 +101,7 @@ public interface UserService {
 	 * @since 2024.03.14
 	 * @author In-mook, Jeong
 	 */
-	public String findPassword(MemberDTO memberDTO);
+	public UserResultDTO getTempPassword(MemberDTO memberDTO);
 	
 	/**
 	 * Search the user list according to the search conditions.

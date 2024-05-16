@@ -76,5 +76,10 @@ async function findPassword() {
 		"email" : email
 	}
 	const result = await httpUtil.post('/find-password', sendData, httpUtil.RETURN_TYPE.JSON);
+	if(result.status === 'FPW-200') {
+		alert('신규 비밀번호는 ' + result.content + '입니다.');
+	} else {
+		alert(result.content);
+	}
 }
 </script>

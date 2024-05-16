@@ -16,6 +16,7 @@ import kr.mook.user.constants.StatusEnum;
 import kr.mook.user.constants.UserMessageConstants;
 import kr.mook.user.member.dao.MemberDao;
 import kr.mook.user.member.dto.MemberDTO;
+import kr.mook.user.util.data.CryptoUtils;
 import kr.mook.user.util.data.RandomStringUtils;
 
 /**
@@ -37,11 +38,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserResultDTO login(LoginDTO loginDTO) {
 		UserResultDTO userResultDTO = new UserResultDTO("Log-in");
-		System.out.println("user count : " + this.memberDao.countByLoginDto(loginDTO));
-		// password : test1234
-		String encryptPw = "937e8d5fbb48bd4949536cd65b8d35c426b80d2f830c5c308e2cdec422ae2244";
-		if(loginDTO.getUserId().equals("test") 
-			&& loginDTO.getPassword().equals(encryptPw)) {
+		if(this.memberDao.countByLoginDto(loginDTO) > 0) {
 			userResultDTO.setStatus(
 				StatusEnum.LOGIN_SUCCESS.getStatus(),
 				StatusEnum.LOGIN_SUCCESS.getStatusEngMessage(),
@@ -167,14 +164,30 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String findPassword(MemberDTO memberDTO) {
-		if(memberDTO.getName().equals("홍길동")
-			&& memberDTO.getUserId().equals("test")
-			&& memberDTO.getEmail().equals("test@gmail.com")) {
-			return RandomStringUtils.getRandomString(10);
+	public UserResultDTO getTempPassword(MemberDTO memberDTO) {
+		UserResultDTO userResultDTO = new UserResultDTO("Find-PW");
+		if(this.memberDao.countByMemberDto(memberDTO) > 0) {
+			userResultDTO.setStatus(
+				StatusEnum.FIND_ID_SUCCESS.getStatus(),
+				StatusEnum.FIND_ID_SUCCESS.getStatusEngMessage(),
+				StatusEnum.FIND_ID_SUCCESS.getStatusKorMessage()
+			);
+			
+			String tempPassword = RandomStringUtils.getRandomString(10);
+			memberDTO.setPassword(CryptoUtils.toSHA256(tempPassword));
+			this.memberDao.updateTempPassword(memberDTO);
+			userResultDTO.setContent("STRING", tempPassword);
+		} else {
+			userResultDTO.setStatus(
+				StatusEnum.FIND_PW_FAILED.getStatus(),
+				StatusEnum.FIND_PW_FAILED.getStatusEngMessage(),
+				StatusEnum.FIND_PW_FAILED.getStatusKorMessage()
+			);
+			
+			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_FIND_PW_FAILED);
 		}
 		
-		return "";
+		return userResultDTO;
 	}
 
 	@Override

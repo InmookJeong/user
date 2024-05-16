@@ -39,6 +39,11 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
+	public int countByMemberDto(MemberDTO memberDTO) {
+		return sqlSession.selectOne(NAME_SPACE+".countByMemberDto", memberDTO);
+	}
+	
+	@Override
 	public String selectUserId(MemberDTO memberDTO) {
 		return sqlSession.selectOne(NAME_SPACE+".selectUserId", memberDTO);
 	}
@@ -51,6 +56,11 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public void insertMember(SignUpDTO signUpDTO) {
 		sqlSession.selectOne(NAME_SPACE+".insertMember", signUpDTO);
+	}
+	
+	@Override
+	public void updateTempPassword(MemberDTO memberDTO) {
+		sqlSession.selectOne(NAME_SPACE+".updateTempPassword", memberDTO);
 	}
 
 }

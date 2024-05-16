@@ -49,6 +49,16 @@ public enum StatusEnum {
 		"FID-400", 
 		UserMessageConstants.STATUS_ENG_MESSAGE_FIND_ID_FAILED,
 		UserMessageConstants.STATUS_KOR_MESSAGE_FIND_ID_FAILED
+	),
+	FIND_PW_SUCCESS(
+		"FPW-200", 
+		UserMessageConstants.STATUS_ENG_MESSAGE_FIND_PW_SUCCESS,
+		UserMessageConstants.STATUS_KOR_MESSAGE_FIND_PW_SUCCESS
+	),
+	FIND_PW_FAILED(
+		"FPW-400", 
+		UserMessageConstants.STATUS_ENG_MESSAGE_FIND_PW_FAILED,
+		UserMessageConstants.STATUS_KOR_MESSAGE_FIND_PW_FAILED
 	);
 	
 	// Fields

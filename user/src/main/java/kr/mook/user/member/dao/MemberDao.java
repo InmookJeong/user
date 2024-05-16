@@ -14,10 +14,13 @@ public interface MemberDao {
 	
 	public int countByEmail(String email);
 	
+	public int countByMemberDto(MemberDTO memberDTO);
+	
 	public String selectUserId(MemberDTO memberDTO);
 	
 	public int getNextId();
 	
 	public void insertMember(SignUpDTO signUpDTO);
 	
+	public void updateTempPassword(MemberDTO memberDTO);
 }

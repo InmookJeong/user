@@ -46,6 +46,25 @@
 			M.email = #{email}
 	</select>
 	
+	<select id="countByMemberDto" parameterType="kr.mook.user.member.dto.MemberDTO" resultType="int">
+		/** MemberMapper.countByEmail */
+		SELECT
+			COUNT(M.id)
+		FROM
+			MEMBER M
+		WHERE
+			1=1
+			<if test="userId != null and userId != ''">
+				AND M.userId = #{userId}
+			</if>
+			<if test="name != null and name != ''">
+				AND M.name = #{name}
+			</if>
+			<if test="email != null and email != ''">
+				AND M.email = #{email}
+			</if>
+	</select>
+	
 	<select id="selectUserId" parameterType="kr.mook.user.member.dto.MemberDTO" resultType="String">
 		/** MemberMapper.selectUserId */
 		SELECT
@@ -109,5 +128,15 @@
 			false
 		)
 	</insert>
+	
+	<update id="updateTempPassword" parameterType="kr.mook.user.member.dto.MemberDTO">
+		/** MemberMapper.updateTempPassword */
+		UPDATE MEMBER
+		SET
+			password = #{password},
+			isTempPassword = true
+		WHERE
+			userId = #{userId}
+	</update>
 	
 </mapper>
