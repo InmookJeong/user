@@ -90,6 +90,7 @@ async function login() {
 	} else if(result.status === 'LGN-400') {
 		if(result.contentType === 'STRING') {
 			alert(result.content);
+			location.href = '/';
 		}
 	} else {
 		alert('시스템 에러 발생');
