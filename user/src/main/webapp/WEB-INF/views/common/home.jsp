@@ -14,9 +14,14 @@
 			<div>
 				<div id="logo" class="float-left cursor-default">USER</div>
 				<nav class="menu-group float-right">
+					<% if(request.getSession().getAttribute("login") != null && (boolean)request.getSession().getAttribute("login")) { %>
+					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer" data-btn-name="my-page">MyPage</a>
+					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer" data-btn-name="logout">Logout</a>
+					<% } else { %>
 					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer" data-btn-name="about">About</a>
 					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer" data-btn-name="login">Login</a>
 					<a class="menu-link p1 border-gray-hover border-bottom-solid-hover border-5px-hover border-purple bg-color-light-gray-hover cursor-pointer" data-btn-name="sign-up">SignUp</a>
+					<% }%>
 				</nav>
 			</div>
 		</header>
@@ -25,6 +30,7 @@
 			<div class="font-7rem font-bold cursor-default">USER</div>
 			<p class="font-2rem color-gray cursor-default"><사용자 정보 관리 시스템></p>
 			<p class="cursor-default">사용자 정보 관리 프로그램에 오신 것을 환영합니다.</p>
+			<p class="cursor-default"><%= request.getSession().getAttribute("login") %></p>
 		</main>
 
 		<footer class="position-absolute w-100p h-3rem pt-1 bottom-0 text-center">
@@ -38,8 +44,7 @@ const menuLink = document.getElementsByClassName('menu-link');
 for (var i = 0; i < menuLink.length; i++) {
 	menuLink[i].addEventListener('click', (event) => {
 		const btnName = event.target.dataset.btnName;
-		if(btnName === 'login') location.href = '/' + btnName;
-		if(btnName === 'sign-up') location.href = '/' + btnName;
+		if(btnName) location.href = '/' + btnName;
 	});
 }
 </script>

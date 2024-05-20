@@ -83,6 +83,7 @@ public class UserController {
 	public UserResultDTO login(HttpServletRequest request, @RequestBody LoginDTO loginDTO) {
 		_log.info("##### Execute login processing.");
 		UserResultDTO userResultDTO = this.userService.login(loginDTO);
+		request.getSession().setAttribute("login", true);
 		return userResultDTO;
 	}
 	
@@ -99,7 +100,7 @@ public class UserController {
 	public String logout(HttpServletRequest request) {
 		_log.info("##### Execute logout processing.");
 		HttpSession session = request.getSession();
-		session.removeAttribute("isAlive");
+		session.removeAttribute("login");
 		
 		UserResultDTO userResultDTO = this.userService.logout();
 		_log.info("##### Logout result : " + userResultDTO.toString());
