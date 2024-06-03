@@ -4,62 +4,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Tile Layout</title>
-		<style>
-			html, body {
-				margin: 0 !important;
-				height: 100% !important;
-			}
+		<title>${pageTitle}</title>
 			
-			.layout-header {
-				width: auto;
-				height: 50px;
-				background-color: #d7d7d7;
-				color: #636363;
-				padding: 10px 10px;
-				text-align: center;
-				font-weight: bold;
-				font-size: 20px;
-				display: block
-			}
-			
-			.content-container {
-				width: auto;
-				height: calc(100% - 160px);
-			}
-			
-			.layout-menu {
-				width: 210px;
-				height: calc(100% - 20px);
-				background-color: #c3ffdc;
-				color: #636363;
-				padding: 10px 10px;
-				text-align: center;
-				font-weight: bold;
-				font-size: 20px;
-				float: left;
-			}
-			
-			.layout-content {
-				width: calc(100% - 250px);
-				height: calc(100% - 20px);
-				background-color: #ead0fb;
-				padding: 10px 10px;
-				float: right;
-			}
-			
-			.layout-footer {
-				width: auto;
-				height: 90px;
-				background-color: #7a7a7a;
-				color: #dbdbdb;
-				padding: 10px 10px;
-				text-align: center;
-				font-weight: bold;
-				font-size: 20px;
-				display: block
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="/resources/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/resources/css/layout/layout.css" />
 	</head>
 	
 	<body>

@@ -51,6 +51,7 @@ public class UserController {
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String home(HttpServletRequest request, HttpServletResponse response) {
 		this.setCurrentMenu(request);
+		this.setPageTitle(request, "USER");
 		return UserViewConstatns.COMMON_HOME;
 	}
 	
@@ -65,10 +66,14 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request) {
 		this.setCurrentMenu(request);
-		
 		HttpSession session = request.getSession();
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
-		if(isAlive) return UserViewConstatns.COMMON_HOME;
+		if(isAlive) {
+			this.setPageTitle(request, "USER");
+			return UserViewConstatns.COMMON_HOME;
+		}
+		
+		this.setPageTitle(request, "USER - Login");
 		return UserViewConstatns.COMMON_LOGIN;
 	}
 	
@@ -287,10 +292,14 @@ public class UserController {
 		return UserViewConstatns.COMMON_HOME;
 	}
 	
+	private void setPageTitle(final HttpServletRequest request, final String title) {
+		request.setAttribute("pageTitle", title);
+	}
+	
 	private void setCurrentMenu(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String requestUri = request.getRequestURI().replace("/", "");
-		if(requestUri.isEmpty()) session.removeAttribute("menu");
-		else session.setAttribute("menu", requestUri);
+		if(requestUri.isEmpty()) request.removeAttribute("menu");
+		else request.setAttribute("menu", requestUri);
 	}
 }

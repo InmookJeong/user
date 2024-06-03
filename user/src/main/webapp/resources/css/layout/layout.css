@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+/* Header CSS */
+.layout.header {
+	width: auto;
+	height: 70px;
+	background-color: #fff;
+	color: #636363;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	display: block;
+	box-shadow: 0px 0px 5px 0px #ddd;
+}
+
+.layout.header > #logo,
+.layout.header > nav.menu-group > .menu:not(.selected) {
+	cursor: pointer;
+}
+
+.layout.header > #logo > .logo-item,
+.layout.header > nav.menu-group > .menu > .menu-item {
+	position: relative;
+	top: 25%;
+}
+
+.layout.header > #logo > .logo-item {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+.layout.header > nav.menu-group > .menu > .menu-item {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.layout.header > nav.menu-group > .menu:not(.selected):hover {
+	background-color: #eee;
+	border-bottom: 3px solid gray;
+}
+
+.layout.content-container {
+	width: auto;
+	height: calc(100% - 160px);
+}
+
+.layout.menu {
+	width: 210px;
+	height: calc(100% - 20px);
+	background-color: #c3ffdc;
+	color: #636363;
+	padding: 10px 10px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	float: left;
+}
+
+.layout.content {
+	width: calc(100% - 250px);
+	height: calc(100% - 20px);
+	background-color: #ead0fb;
+	padding: 10px 10px;
+	float: right;
+}
+
+.layout.footer {
+	width: auto;
+	height: 90px;
+	background-color: #7a7a7a;
+	color: #dbdbdb;
+	padding: 10px 10px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	display: block
+}
