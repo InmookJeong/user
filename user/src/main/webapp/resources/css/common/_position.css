@@ -44,6 +44,46 @@
 	top: 5;
 }
 
+.top-5p {
+	top: 5%;
+}
+
+.top-10p {
+	top: 10%;
+}
+
+.top-15p {
+	top: 15%;
+}
+
+.top-20p {
+	top: 20%;
+}
+
+.top-25p {
+	top: 25%;
+}
+
+.top-30p {
+	top: 30%;
+}
+
+.top-35p {
+	top: 35%;
+}
+
+.top-40p {
+	top: 40%;
+}
+
+.top-45p {
+	top: 45%;
+}
+
+.top-50p {
+	top: 50%;
+}
+
 /* Bottom */
 .bottom-0 {
 	bottom: 0;

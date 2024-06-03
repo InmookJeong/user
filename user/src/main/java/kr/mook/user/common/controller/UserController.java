@@ -50,6 +50,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String home(HttpServletRequest request, HttpServletResponse response) {
+		this.setCurrentMenu(request);
 		return UserViewConstatns.COMMON_HOME;
 	}
 	
@@ -63,6 +64,8 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request) {
+		this.setCurrentMenu(request);
+		
 		HttpSession session = request.getSession();
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.COMMON_HOME;
@@ -117,6 +120,8 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/sign-up", method = RequestMethod.GET)
 	public String signUp(HttpServletRequest request) {
+		this.setCurrentMenu(request);
+		
 		HttpSession session = request.getSession();
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.COMMON_HOME;
@@ -207,6 +212,8 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/find-id", method = RequestMethod.GET)
 	public String findId(HttpServletRequest request) {
+		this.setCurrentMenu(request);
+		
 		HttpSession session = request.getSession();
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.COMMON_HOME;
@@ -239,6 +246,8 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/find-password", method = RequestMethod.GET)
 	public String findPassword(HttpServletRequest request) {
+		this.setCurrentMenu(request);
+		
 		HttpSession session = request.getSession();
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.COMMON_HOME;
@@ -276,5 +285,12 @@ public class UserController {
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.ADMIN_LIST;
 		return UserViewConstatns.COMMON_HOME;
+	}
+	
+	private void setCurrentMenu(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String requestUri = request.getRequestURI().replace("/", "");
+		if(requestUri.isEmpty()) session.removeAttribute("menu");
+		else session.setAttribute("menu", requestUri);
 	}
 }
