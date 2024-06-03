@@ -18,6 +18,9 @@ public class UserViewConstatns {
 	public static final String COMMON_SIGNUP = "common/sign-up";	// sign-up page
 	public static final String COMMON_FIND_ID = "common/find-id";	// find-id page
 	public static final String COMMON_FIND_PASSWORD = "common/find-password";	// find-password page
+	
+	// MEMBER
+	public static final String MEMBER_MY_PAGE = "member/my-page";	// my page
 
 	// ADMIN
 	public static final String ADMIN_LIST = "admin/list";	// user list page
