@@ -14,10 +14,7 @@
 		<!-- header -->
 		<tiles:insertAttribute name="header"/>
 		
-		<div class="content-container">
-			<!-- menu -->
-			<tiles:insertAttribute name="menu"/>
-			
+		<div class="layout content-container">
 			<!-- content -->
 			<tiles:insertAttribute name="content"/>
 		</div>
