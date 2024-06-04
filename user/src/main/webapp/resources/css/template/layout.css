@@ -18,6 +18,12 @@
 	cursor: pointer;
 }
 
+.layout.header > nav.menu-group > .menu.selected {
+	cursor: default;
+	border-bottom: 4px solid purple;
+	pointer-events: none;
+}
+
 .layout.header > #logo > .logo-item,
 .layout.header > nav.menu-group > .menu > .menu-item {
 	position: relative;
@@ -41,7 +47,7 @@
 
 .layout.content-container {
 	width: auto;
-	height: calc(100% - 100px);
+	height: calc(100% - 70px);
 }
 
 .layout.content-container > .content {

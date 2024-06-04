@@ -40,3 +40,8 @@
 
 <!-- js files -->
 <script src="/resources/js/layout/header.js"></script>
+
+<script>
+const menu = '${menu}';
+selectMenu(menu);
+</script>
