@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.content > .home {
+	position: relative;
+	top: 25%;
+	text-align: center;
+	cursor: default;
+}
+
+.content > .home.main-title {
+	font-size: 7rem;
+	font-weight: bold;
+}
+
+.content > .home.sub-title {
+	font-size: 2rem;
+	color: gray;
+}

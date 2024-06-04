@@ -41,10 +41,14 @@
 
 .layout.content-container {
 	width: auto;
-	height: calc(100% - 150px);
+	height: calc(100% - 100px);
 }
 
 .layout.content-container > .content {
+	height: 100%;
+}
+
+.layout.content-container > .content.with-menu {
 	width: calc(100% - 250px);
 	height: calc(100% - 20px);
 	background-color: #ead0fb;

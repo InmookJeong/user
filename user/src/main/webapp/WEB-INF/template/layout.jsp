@@ -7,7 +7,7 @@
 		<title>${pageTitle}</title>
 			
 		<link rel="stylesheet" type="text/css" href="/resources/css/default.css" />
-		<link rel="stylesheet" type="text/css" href="/resources/css/layout/layout.css" />
+		<link rel="stylesheet" type="text/css" href="/resources/css/template/layout.css" />
 	</head>
 	
 	<body>
