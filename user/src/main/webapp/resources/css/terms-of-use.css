@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.items {
+	height: 500px;
+	overflow-y: auto;
+}
+
+.items > .description {
+	padding: 10px 20px;
+}
+
+.items > .description > .description-box {
+	background-color: #fdfbfb;
+	border: 1px solid #969696;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.button-group {
+	padding: 0px 20px;
+}
+
+.default-button {
+	padding: 12px;
+	background-color: white;
+	color: black;
+	border-radius: 10px;
+	position: relative;
+	top: 10px;
+	border: 2px solid #ddd;
+	cursor: pointer;
+}
+
+.primary-button {
+	padding: 12px 15px;
+	background-color: blue;
+	color: white;
+	border-radius: 10px;
+	position: relative;
+	top: 10px;
+	cursor: pointer;
+}

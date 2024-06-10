@@ -15,6 +15,7 @@ public class UserViewConstatns {
 	// COMMON PAGES
 	public static final String COMMON_HOME = "common/home";		// home page
 	public static final String COMMON_LOGIN = "common/login";	// log-in page
+	public static final String COMMON_TERMS_OF_USE = "common/terms-of-use";	// terms-of-use page
 	public static final String COMMON_SIGNUP = "common/sign-up";	// sign-up page
 	public static final String COMMON_FIND_ID = "common/find-id";	// find-id page
 	public static final String COMMON_FIND_PASSWORD = "common/find-password";	// find-password page

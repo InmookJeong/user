@@ -116,6 +116,23 @@ public class UserController {
 	}
 	
 	/**
+	 * Move you to the terms of use page.
+	 * 
+	 * @param request
+	 * @return
+	 * @since 2024.06.10
+	 * @author In-mook, Jeong
+	 */
+	@RequestMapping(value = "/terms-of-use", method = RequestMethod.GET)
+	public String termsOfUse(HttpServletRequest request) {
+		this.setCurrentMenu(request);
+		
+		this.setPageTitle(request, "USER - Sign Up");
+		request.setAttribute("type", "join");
+		return UserViewConstatns.COMMON_TERMS_OF_USE;
+	}
+	
+	/**
 	 * Move you to the singup page.
 	 * 
 	 * @param request
@@ -129,7 +146,12 @@ public class UserController {
 		
 		HttpSession session = request.getSession();
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
-		if(isAlive) return UserViewConstatns.COMMON_HOME;
+		if(isAlive) {
+			this.setPageTitle(request, "USER");
+			return UserViewConstatns.COMMON_HOME;
+		}
+		
+		this.setPageTitle(request, "USER - Sign Up");
 		return UserViewConstatns.COMMON_SIGNUP;
 	}
 	
@@ -297,9 +319,8 @@ public class UserController {
 	}
 	
 	private void setCurrentMenu(HttpServletRequest request) {
-		HttpSession session = request.getSession();
 		String requestUri = request.getRequestURI().replace("/", "");
-		if(requestUri.isEmpty()) request.removeAttribute("menu");
-		else request.setAttribute("menu", requestUri);
+		if(requestUri.isEmpty()) requestUri = "home";
+		request.setAttribute("menu", requestUri);
 	}
 }

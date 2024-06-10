@@ -45,6 +45,7 @@
 	border-bottom: 3px solid gray;
 }
 
+/* Content CSS */
 .layout.content-container {
 	width: auto;
 	height: calc(100% - 70px);

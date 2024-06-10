@@ -29,8 +29,8 @@
 				로그인
 			</span>
 		</div>
-		<div class="menu float-left h-100p" data-menu-name="sign-up" data-menu-role="u">
-			<span class="menu-item" data-menu-name="sign-up" data-menu-role="u">
+		<div class="menu float-left h-100p" data-menu-name="terms-of-use" data-menu-role="u">
+			<span class="menu-item" data-menu-name="terms-of-use" data-menu-role="u">
 				회원가입
 			</span>
 		</div>
