@@ -1,3 +1,7 @@
+if(window.location.pathname !== '/sign-up') {
+	window.localStorage.removeItem("termsOfUse");
+}
+
 const logo = document.getElementById('logo');
 const menuList = document.getElementsByClassName('menu');
 
