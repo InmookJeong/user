@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.mook.user.common.dto.LoginDTO;
-import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
 import kr.mook.user.constants.UserViewConstatns;
@@ -166,9 +165,9 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/sign-up", method = RequestMethod.POST)
 	@ResponseBody
-	public UserResultDTO signUp(HttpServletRequest request, @RequestBody SignUpDTO signUpDTO) {
-		_log.info("##### Execute login processing." + signUpDTO.toString());
-		UserResultDTO userResultDTO = this.userService.signUp(signUpDTO);
+	public UserResultDTO signUp(HttpServletRequest request, @RequestBody String encryptedSignUpData) {
+		_log.info("##### Execute sign up processing.");
+		UserResultDTO userResultDTO = this.userService.signUp(encryptedSignUpData);
 		return userResultDTO;
 	}
 	

@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import kr.mook.crypto.DecryptUtil;
+import kr.mook.crypto.EncryptUtil;
 import kr.mook.user.common.dto.LoginDTO;
-import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultContentDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
@@ -16,7 +18,6 @@ import kr.mook.user.constants.StatusEnum;
 import kr.mook.user.constants.UserMessageConstants;
 import kr.mook.user.member.dao.MemberDao;
 import kr.mook.user.member.dto.MemberDTO;
-import kr.mook.user.util.data.CryptoUtils;
 import kr.mook.user.util.data.RandomStringUtils;
 
 /**
@@ -31,6 +32,12 @@ public class UserServiceImpl implements UserService {
 	
 	// UserService Logger
 	private final Logger _log = Logger.getLogger(UserService.class.getName());
+	
+	@Value("${Crypto.AES.SecretKey}")
+	private String AES_SECRET_KEY;
+	
+	@Value("${Crypto.AES.IV}")
+	private String AES_IV;
 	
 	@Autowired
 	private MemberDao memberDao;
@@ -111,29 +118,32 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserResultDTO signUp(SignUpDTO signUpDTO) {
+	public UserResultDTO signUp(String encryptedSignUpData) {
 		UserResultDTO userResultDTO = new UserResultDTO("Sign-up");
-		int id = this.memberDao.getNextId();
-		signUpDTO.setId(id);
-		
-		try {
-			this.memberDao.insertMember(signUpDTO);
-			userResultDTO.setStatus(
-				StatusEnum.SIGNUP_SUCCESS.getStatus(),
-				StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
-				StatusEnum.SIGNUP_SUCCESS.getStatusKorMessage()
-			);
-			
-			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
-		} catch (Exception e) {
-			userResultDTO.setStatus(
-				StatusEnum.SIGNUP_FAILED.getStatus(),
-				StatusEnum.SIGNUP_FAILED.getStatusEngMessage(),
-				StatusEnum.SIGNUP_FAILED.getStatusKorMessage()
-			);
-			
-			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_FAILED);
-		}
+		String signUpData = DecryptUtil.fromAES(encryptedSignUpData, AES_SECRET_KEY, AES_IV);
+		System.out.println("signUpData : " + signUpData);
+//		SignUpDTO signUpDTO = new SignUpDTO();
+//		int id = this.memberDao.getNextId();
+//		signUpDTO.setId(id);
+//		
+//		try {
+//			this.memberDao.insertMember(signUpDTO);
+//			userResultDTO.setStatus(
+//				StatusEnum.SIGNUP_SUCCESS.getStatus(),
+//				StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
+//				StatusEnum.SIGNUP_SUCCESS.getStatusKorMessage()
+//			);
+//			
+//			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
+//		} catch (Exception e) {
+//			userResultDTO.setStatus(
+//				StatusEnum.SIGNUP_FAILED.getStatus(),
+//				StatusEnum.SIGNUP_FAILED.getStatusEngMessage(),
+//				StatusEnum.SIGNUP_FAILED.getStatusKorMessage()
+//			);
+//			
+//			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_FAILED);
+//		}
 		
 		return userResultDTO;
 	}
@@ -174,7 +184,7 @@ public class UserServiceImpl implements UserService {
 			);
 			
 			String tempPassword = RandomStringUtils.getRandomString(10);
-			memberDTO.setPassword(CryptoUtils.toSHA256(tempPassword));
+			memberDTO.setPassword(EncryptUtil.toSHA256(tempPassword));
 			this.memberDao.updateTempPassword(memberDTO);
 			userResultDTO.setContent("STRING", tempPassword);
 		} else {

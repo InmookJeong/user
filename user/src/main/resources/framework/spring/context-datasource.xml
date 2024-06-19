@@ -9,6 +9,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath:/framework/properties/globals.properties</value>
+				<value>classpath:/framework/properties/application.properties</value>
 			</list>
 		</property>
 	</bean>
