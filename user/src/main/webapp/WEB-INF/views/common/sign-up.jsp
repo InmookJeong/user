@@ -44,6 +44,9 @@
 </main>
 
 <script>
+const AES_SECRET_KEY = 'YOUR_SECRET_KEY_32_CHARACTOR_123';
+const AES_IV = 'YOUR_IV_VALUE123';
+
 const menuLink = document.getElementsByClassName('menu-link');
 for (var i = 0; i < menuLink.length; i++) {
 	menuLink[i].addEventListener('click', (event) => {
@@ -54,14 +57,14 @@ for (var i = 0; i < menuLink.length; i++) {
 }
 
 async function focusOut(target) {
-	const httpUtil = HttpUtil();
 	const targetTag = document.getElementById(target);
 	const targetData = targetTag.value;
 	const tagName = targetTag.dataset.tagName;
 	const url = '/check-' + target + '?' + target + '='+ targetData;
-	const result = await httpUtil.get(url, httpUtil.RETURN_TYPE.TEXT);
+	const result = await HttpUtil.get(url, HttpUtil.RETURN_TYPE.TEXT);
 	if(result == 0) {
 		alert(tagName + '이(가) 중복됩니다.');
+		targetTag.value = '';
 	}
 }
 
@@ -78,7 +81,7 @@ async function signup() {
 		return;
 	}
 	
-	const cryptoPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
+	const cryptoPassword = CryptoUtil.encrypt.SHA256(password);
 	const name = document.getElementById('name').value;
 	const gender = document.querySelector('input[name="gender"]:checked').value;
 	const birth = document.getElementById('birth').value;
@@ -102,7 +105,9 @@ async function signup() {
 		"address" : address,
 		"addressDetail" : addressDetail
 	}
-	await httpUtil.post('/sign-up', sendData, httpUtil.RETURN_TYPE.JSON);
+	
+	const cipherText = CryptoUtil.encrypt.AES(JSON.stringify(sendData), AES_SECRET_KEY, AES_IV);
+	const returnText = await httpUtil.post('/sign-up', cipherText, httpUtil.RETURN_TYPE.TEXT);
 }
 
 function validSignUpData() {
