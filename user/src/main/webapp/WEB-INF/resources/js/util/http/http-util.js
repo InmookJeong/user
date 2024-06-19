@@ -4,22 +4,27 @@
  * @author Inmook, Jeong
  * @since 2024.03.13
  */
-const HttpUtil = (() => {
+var HttpUtil = HttpUtil || (function() {
 	
-	const REQUEST_METHOD = {
+	/**
+	 * HttpUtil namespace
+	 */
+	var H = {};
+	
+	REQUEST_METHOD = H.REQUEST_METHOD = {
 		GET : 'GET',
 		POST : 'POST',
 		PUT : 'PUT',
 		DELETE : 'DELETE'
-	}
+	};
 	
-	const RETURN_TYPE = {
+	RETURN_TYPE = H.RETURN_TYPE = {
 		JSON : 'json',
 		TEXT : 'text'
-	}
+	};
 	
 	// Get function
-	const get = async (url, returnType) => {
+	H.get = (async function(url, returnType) {
 		const requestObject = {
 			method: REQUEST_METHOD.GET
 		};
@@ -29,60 +34,56 @@ const HttpUtil = (() => {
 		} else if(returnType === RETURN_TYPE.TEXT) {
 			return await getText(url, requestObject);
 		}
-	}
+	});
 	
-	const getJson = async (url, requestObject) => {
+	getJson = async (url, requestObject) => {
 		const response = await callApi(url, requestObject);
-		return await response.json();
-	}
+		return response.json();
+	};
 	
-	const getText = async (url, requestObject) => {
+	getText = async (url, requestObject) => {
 		const response = await callApi(url, requestObject);
-		return await response.text()
-	}
+		return response.text()
+	};
 	
 	// Post function
-	const post = async (url, sendData, returnType) => {
+	H.post = (async function(url, sendData, returnType) {
 		if(returnType === RETURN_TYPE.JSON) {
 			return await postJson(url, sendData);
 		} else if(returnType === RETURN_TYPE.TEXT) {
 			return await postText(url, sendData);
 		}
+	});
+	
+	postJson = async (url, sendData) => {
+		const requestObject = {
+			method: REQUEST_METHOD.POST,
+			headers: {
+				'Content-Type': 'application/json;charset=utf-8'
+			},
+			body: JSON.stringify(sendData),
+		};
+		
+		const response = await callApi(url, requestObject);
+		return response.json();
 	};
 	
-	const postJson = async (url, sendData) => {
+	postText = async (url, sendData) => {
 		const requestObject = {
 			method: REQUEST_METHOD.POST,
 			headers: {
 				'Content-Type': 'application/json;charset=utf-8'
 			},
-			body: JSON.stringify(sendData)
+			body: sendData
+			/*body: JSON.stringify(sendData)*/
 		};
 		
-		const response = await callApi(url, requestObject);
-		return await response.json();
-	}
+		return await callApi(url, requestObject).text();
+	};
 	
-	const postText = async (url, sendData) => {
-		const requestObject = {
-			method: REQUEST_METHOD.POST,
-			headers: {
-				'Content-Type': 'application/json;charset=utf-8'
-			},
-			body: JSON.stringify(sendData)
-		};
-		
-		const response = await callApi(url, requestObject);
-		return await response.text();
-	}
-	
-	const callApi = async (url, requestObject) => {
+	callApi = async (url, requestObject) => {
 		return await fetch(url, requestObject);
 	};
 	
-	return {
-		get : get,
-		post : post,
-		RETURN_TYPE : RETURN_TYPE
-	}
-});
+	return H;
+}());

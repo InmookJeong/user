@@ -44,9 +44,9 @@ var CryptoUtil = CryptoUtil || (function() {
 	 * @returns encrypted text
 	 */
 	C_encrypt.AES = (function(plainText, secretKey, iv) {
-		var encodedSecretKey = CryptoJS.enc.Utf8.parse(secretKey);
+		const encodedSecretKey = CryptoJS.enc.Utf8.parse(secretKey);
 		const encodedIv = CryptoJS.enc.Utf8.parse(iv);
-		var cipherText = CryptoJS.AES.encrypt(plainText, encodedSecretKey, {
+		const cipherText = CryptoJS.AES.encrypt(plainText, encodedSecretKey, {
 			iv: encodedIv,
 			mode: CryptoJS.mode.CBC,
 			padding: CryptoJS.pad.Pkcs7
@@ -65,8 +65,8 @@ var CryptoUtil = CryptoUtil || (function() {
 	 * @returns encrypted text
 	 */
 	C_decrypt.AES = (function(cipherText, secretKey, iv) {
-		var encodedSecretKey = CryptoJS.enc.Utf8.parse(secretKey);
-		var plainText = CryptoJS.AES.decrypt(replaceUtf8Character(cipherText), encodedSecretKey, {
+		const encodedSecretKey = CryptoJS.enc.Utf8.parse(secretKey);
+		const plainText = CryptoJS.AES.decrypt(replaceUtf8Character(cipherText), encodedSecretKey, {
 			iv: CryptoJS.enc.Utf8.parse(iv),
 			padding: CryptoJS.pad.Pkcs7,
 			mode: CryptoJS.mode.CBC
