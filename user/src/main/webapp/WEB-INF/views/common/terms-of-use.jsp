@@ -16,7 +16,7 @@
 	<div class="check-box success mt-1">
 		<div class="round">
 			<input type="checkbox" id="checkAll" />
-			<label for="checkAll">
+			<label for="checkAll" onclick="checkAll();">
 				<span class="title">전체 동의하기</span>
 			</label>
 		</div>
@@ -25,9 +25,9 @@
 	<div class="items mt-2">
 		<div class="check-box success">
 			<div class="round">
-				<input type="checkbox" id="checkSiteTermsOfUse" name="checkSiteTermsOfUse" />
+				<input type="checkbox" id="checkSiteTermsOfUse" name="checkSiteTermsOfUse"data-no="1" data-essential="1" />
 				<label for="checkSiteTermsOfUse">
-					<span class="title">사이트 이용 약관 동의</span>
+					<span class="title">사이트 이용 약관 동의(필수)</span>
 				</label>
 			</div>
 		</div>
@@ -42,9 +42,9 @@
 		
 		<div class="check-box success">
 			<div class="round">
-				<input type="checkbox" id="checkUserInfoTermsOfUse" name="checkUserInfoTermsOfUse" />
+				<input type="checkbox" id="checkUserInfoTermsOfUse" name="checkUserInfoTermsOfUse" data-no="2" data-essential="1" />
 				<label for="checkUserInfoTermsOfUse">
-					<span class="title">개인정보 수집 및 제공 동의 약관 동의</span>
+					<span class="title">개인정보 수집 및 제공 동의 약관 동의(필수)</span>
 				</label>
 			</div>
 		</div>
@@ -83,6 +83,34 @@
 	}
 	
 	function signUp() {
+		setItem();
 		location.href = "/sign-up";
+	}
+	
+	function checkAll() {
+		const checkAll = document.getElementById('checkAll');
+		const checkBoxList = document.querySelectorAll('.items > .check-box input[type=checkbox]');
+		for(let checkBox of checkBoxList) {
+			checkBox.checked = !checkAll.checked;
+		}
+	}
+	
+	function setItem() {
+		const checkBoxList = document.querySelectorAll('.items > .check-box input[type=checkbox]');
+		const checkList = new Array();
+		for(let checkBox of checkBoxList) {
+			const no = checkBox.dataset.no;
+			const essential = checkBox.dataset.essential;
+			if(essential === '1' && !checkBox.checked) {
+				alert('필수 약관에 동의해주세요.');
+				return;
+			}
+			
+			if(checkBox.checked) {
+				checkList.push({"no":no, "agree":true});
+			}
+		}
+		
+		window.localStorage.setItem("termsOfUse", JSON.stringify(checkList));
 	}
 </script>
