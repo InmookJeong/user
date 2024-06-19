@@ -5,12 +5,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>${pageTitle}</title>
-			
-		<link rel="stylesheet" type="text/css" href="/resources/css/default.css" />
-		<link rel="stylesheet" type="text/css" href="/resources/css/template/layout.css" />
 	</head>
 	
 	<body>
+		<%@include file="init.jsp"%>
+		
 		<!-- header -->
 		<tiles:insertAttribute name="header"/>
 		
