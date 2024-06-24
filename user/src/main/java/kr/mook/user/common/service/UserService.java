@@ -2,6 +2,8 @@ package kr.mook.user.common.service;
 
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonParseException;
+
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.member.dto.MemberDTO;
@@ -79,7 +81,7 @@ public interface UserService {
 	 * @since 2024.03.13
 	 * @author In-mook, Jeong
 	 */
-	public UserResultDTO signUp(String encryptedSignUpData);
+	public UserResultDTO signUp(String encryptedSignUpData) throws JsonParseException, Exception ;
 	
 	/**
 	 * This method provides the function to find the userId.<br/>

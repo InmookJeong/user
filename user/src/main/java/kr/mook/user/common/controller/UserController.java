@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonParseException;
+
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
@@ -151,6 +153,7 @@ public class UserController {
 		}
 		
 		this.setPageTitle(request, "USER - Sign Up");
+		request.setAttribute("type", "join");
 		return UserViewConstatns.COMMON_SIGNUP;
 	}
 	
@@ -165,7 +168,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/sign-up", method = RequestMethod.POST)
 	@ResponseBody
-	public UserResultDTO signUp(HttpServletRequest request, @RequestBody String encryptedSignUpData) {
+	public UserResultDTO signUp(HttpServletRequest request, @RequestBody String encryptedSignUpData) throws JsonParseException, Exception {
 		_log.info("##### Execute sign up processing.");
 		UserResultDTO userResultDTO = this.userService.signUp(encryptedSignUpData);
 		return userResultDTO;

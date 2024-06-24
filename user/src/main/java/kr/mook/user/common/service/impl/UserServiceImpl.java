@@ -8,9 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonParseException;
+
 import kr.mook.crypto.DecryptUtil;
 import kr.mook.crypto.EncryptUtil;
+import kr.mook.datatype.JsonUtil;
 import kr.mook.user.common.dto.LoginDTO;
+import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultContentDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
@@ -118,32 +122,32 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserResultDTO signUp(String encryptedSignUpData) {
+	public UserResultDTO signUp(String encryptedSignUpData) throws JsonParseException, Exception {
 		UserResultDTO userResultDTO = new UserResultDTO("Sign-up");
 		String signUpData = DecryptUtil.fromAES(encryptedSignUpData, AES_SECRET_KEY, AES_IV);
-		System.out.println("signUpData : " + signUpData);
-//		SignUpDTO signUpDTO = new SignUpDTO();
-//		int id = this.memberDao.getNextId();
-//		signUpDTO.setId(id);
-//		
-//		try {
-//			this.memberDao.insertMember(signUpDTO);
-//			userResultDTO.setStatus(
-//				StatusEnum.SIGNUP_SUCCESS.getStatus(),
-//				StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
-//				StatusEnum.SIGNUP_SUCCESS.getStatusKorMessage()
-//			);
-//			
-//			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
-//		} catch (Exception e) {
-//			userResultDTO.setStatus(
-//				StatusEnum.SIGNUP_FAILED.getStatus(),
-//				StatusEnum.SIGNUP_FAILED.getStatusEngMessage(),
-//				StatusEnum.SIGNUP_FAILED.getStatusKorMessage()
-//			);
-//			
-//			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_FAILED);
-//		}
+		SignUpDTO signUpDto = (SignUpDTO) JsonUtil.stringToObject(signUpData, SignUpDTO.class);
+		System.out.println(signUpDto.toString());
+		int id = this.memberDao.getNextId();
+		signUpDto.setId(id);
+		
+		try {
+			this.memberDao.insertMember(signUpDto);
+			userResultDTO.setStatus(
+				StatusEnum.SIGNUP_SUCCESS.getStatus(),
+				StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
+				StatusEnum.SIGNUP_SUCCESS.getStatusKorMessage()
+			);
+			
+			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
+		} catch (Exception e) {
+			userResultDTO.setStatus(
+				StatusEnum.SIGNUP_FAILED.getStatus(),
+				StatusEnum.SIGNUP_FAILED.getStatusEngMessage(),
+				StatusEnum.SIGNUP_FAILED.getStatusKorMessage()
+			);
+			
+			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_FAILED);
+		}
 		
 		return userResultDTO;
 	}
