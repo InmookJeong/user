@@ -2,6 +2,7 @@ package kr.mook.user.member.dao;
 
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.dto.SignUpDTO;
+import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.member.dto.MemberDTO;
 
 public interface MemberDao {
@@ -23,4 +24,6 @@ public interface MemberDao {
 	public void insertMember(SignUpDTO signUpDTO);
 	
 	public void updateTempPassword(MemberDTO memberDTO);
+	
+	public void insertTermsOfUseMember(TermsOfUseMemberDTO termsOfUseMemberDTO);
 }

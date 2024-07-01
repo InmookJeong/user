@@ -25,7 +25,7 @@
 	<div class="items mt-2">
 		<div class="check-box success">
 			<div class="round">
-				<input type="checkbox" id="checkSiteTermsOfUse" name="checkSiteTermsOfUse"data-no="1" data-essential="1" />
+				<input type="checkbox" id="checkSiteTermsOfUse" name="checkSiteTermsOfUse"data-id="1" data-essential="1" />
 				<label for="checkSiteTermsOfUse">
 					<span class="title">사이트 이용 약관 동의(필수)</span>
 				</label>
@@ -42,7 +42,7 @@
 		
 		<div class="check-box success">
 			<div class="round">
-				<input type="checkbox" id="checkUserInfoTermsOfUse" name="checkUserInfoTermsOfUse" data-no="2" data-essential="1" />
+				<input type="checkbox" id="checkUserInfoTermsOfUse" name="checkUserInfoTermsOfUse" data-id="2" data-essential="1" />
 				<label for="checkUserInfoTermsOfUse">
 					<span class="title">개인정보 수집 및 제공 동의 약관 동의(필수)</span>
 				</label>
@@ -99,7 +99,7 @@
 		const checkBoxList = document.querySelectorAll('.items > .check-box input[type=checkbox]');
 		const checkList = new Array();
 		for(let checkBox of checkBoxList) {
-			const no = checkBox.dataset.no;
+			const id = Number(checkBox.dataset.id);
 			const essential = checkBox.dataset.essential;
 			if(essential === '1' && !checkBox.checked) {
 				alert('필수 약관에 동의해주세요.');
@@ -107,7 +107,7 @@
 			}
 			
 			if(checkBox.checked) {
-				checkList.push({"no":no, "agree":true});
+				checkList.push({"termsOfUseId":id, "agree":true});
 			}
 		}
 		

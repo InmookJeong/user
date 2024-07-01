@@ -139,4 +139,21 @@
 			userId = #{userId}
 	</update>
 	
+	<insert id="insertTermsOfUseMember" parameterType="kr.mook.user.common.dto.TermsOfUseMemberDTO">
+		/** MemberMapper.insertTermsOfUseMember */
+		INSERT INTO TERMS_OF_USE_MEMBERS (
+			termsOfUseId,
+			memberId,
+			isAgree,
+			createMemberId,
+			createDate
+		) VALUES (
+			#{termsOfUseId},
+			#{memberId},
+			#{agree},
+			#{memberId},
+			now()
+		)
+	</insert>
+	
 </mapper>

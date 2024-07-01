@@ -1,5 +1,7 @@
 package kr.mook.user.common.dto;
 
+import java.util.List;
+
 /**
  * SignUpDTO is an object for sign-up processing.
  * 
@@ -25,8 +27,9 @@ public class SignUpDTO {
 	private int createMemberId;
 	private String createDate;
 	
-	private boolean agree1;
-	private boolean agree2;
+	private String termsOfUse;
+	List<TermsOfUseMemberDTO> termsOfUseMemberList;
+	
 	
 	// Default Constructor
 	public SignUpDTO() {}
@@ -34,7 +37,7 @@ public class SignUpDTO {
 	// Constructor
 	public SignUpDTO(int id, String userId, String password, String name, String birth, String gender, String phone, String email,
 			String nation, String postNumber, String address, String addressDetail, int createMemberId,
-			String createDate, boolean agree1, boolean agree2) {
+			String createDate, String termsOfUse) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -50,8 +53,7 @@ public class SignUpDTO {
 		this.addressDetail = addressDetail;
 		this.createMemberId = createMemberId;
 		this.createDate = createDate;
-		this.agree1 = agree1;
-		this.agree2 = agree2;
+		this.termsOfUse = termsOfUse;
 	}
 
 	// Getters and Setters
@@ -167,20 +169,20 @@ public class SignUpDTO {
 		this.createDate = createDate;
 	}
 	
-	public boolean getAgree1() {
-		return agree1;
+	public String getTermsOfUse() {
+		return termsOfUse;
 	}
 	
-	public void setAgree1(boolean agree1) {
-		this.agree1 = agree1;
+	public void setTermsOfUse(String termsOfUse) {
+		this.termsOfUse = termsOfUse;
 	}
 	
-	public boolean getAgree2() {
-		return agree2;
+	public List<TermsOfUseMemberDTO> getTermsOfUseMemberList() {
+		return termsOfUseMemberList;
 	}
-	
-	public void setAgree2(boolean agree2) {
-		this.agree2 = agree2;
+
+	public void setTermsOfUseMemberList(List<TermsOfUseMemberDTO> termsOfUseMemberList) {
+		this.termsOfUseMemberList = termsOfUseMemberList;
 	}
 
 	// toString
@@ -189,7 +191,6 @@ public class SignUpDTO {
 		return "SignUpDTO [id=" + id + ", userId=" + userId + ", password=" + password + ", name=" + name + ", birth="
 				+ birth + ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", nation=" + nation
 				+ ", postNumber=" + postNumber + ", address=" + address + ", addressDetail=" + addressDetail
-				+ ", createMemberId=" + createMemberId + ", createDate=" + createDate + ", agree1=" + agree1
-				+ ", agree2=" + agree2 + "]";
+				+ ", createMemberId=" + createMemberId + ", createDate=" + createDate + ", termsOfUse=" + termsOfUse + "]";
 	}
 }

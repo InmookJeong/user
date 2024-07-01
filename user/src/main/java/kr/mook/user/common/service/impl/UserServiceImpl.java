@@ -15,6 +15,7 @@ import kr.mook.crypto.EncryptUtil;
 import kr.mook.datatype.JsonUtil;
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.dto.SignUpDTO;
+import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.common.dto.UserResultContentDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
@@ -126,12 +127,21 @@ public class UserServiceImpl implements UserService {
 		UserResultDTO userResultDTO = new UserResultDTO("Sign-up");
 		String signUpData = DecryptUtil.fromAES(encryptedSignUpData, AES_SECRET_KEY, AES_IV);
 		SignUpDTO signUpDto = (SignUpDTO) JsonUtil.stringToObject(signUpData, SignUpDTO.class);
-		System.out.println(signUpDto.toString());
 		int id = this.memberDao.getNextId();
 		signUpDto.setId(id);
 		
+		List<TermsOfUseMemberDTO> termsOfUseMemberList = JsonUtil.stringToList(signUpDto.getTermsOfUse(), TermsOfUseMemberDTO.class);
+		for(TermsOfUseMemberDTO termsOfUseMember : termsOfUseMemberList) {
+			termsOfUseMember.setMemberId(signUpDto.getId());
+		}
+		signUpDto.setTermsOfUseMemberList(termsOfUseMemberList);
+		
 		try {
+			// Insert Member
 			this.memberDao.insertMember(signUpDto);
+			
+			// Insert TermsOfUse
+			this.addTermsOfUsemember(signUpDto.getTermsOfUseMemberList());
 			userResultDTO.setStatus(
 				StatusEnum.SIGNUP_SUCCESS.getStatus(),
 				StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
@@ -226,6 +236,14 @@ public class UserServiceImpl implements UserService {
 		memberList.add(member3);
 		
 		return memberList;
+	}
+
+	@Override
+	public boolean addTermsOfUsemember(List<TermsOfUseMemberDTO> termsOfUseMemberDtoList) {
+		for(TermsOfUseMemberDTO termsOfUseMemberDTO: termsOfUseMemberDtoList) {
+			this.memberDao.insertTermsOfUseMember(termsOfUseMemberDTO);
+		}
+		return true;
 	}
 
 }

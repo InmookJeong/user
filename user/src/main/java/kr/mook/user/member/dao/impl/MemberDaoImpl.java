@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.dto.SignUpDTO;
+import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.member.dao.MemberDao;
 import kr.mook.user.member.dto.MemberDTO;
 
@@ -55,12 +56,17 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public void insertMember(SignUpDTO signUpDTO) {
-		sqlSession.selectOne(NAME_SPACE+".insertMember", signUpDTO);
+		sqlSession.insert(NAME_SPACE+".insertMember", signUpDTO);
 	}
 	
 	@Override
 	public void updateTempPassword(MemberDTO memberDTO) {
-		sqlSession.selectOne(NAME_SPACE+".updateTempPassword", memberDTO);
+		sqlSession.update(NAME_SPACE+".updateTempPassword", memberDTO);
+	}
+
+	@Override
+	public void insertTermsOfUseMember(TermsOfUseMemberDTO termsOfUseMemberDTO) {
+		sqlSession.insert(NAME_SPACE+".insertTermsOfUseMember", termsOfUseMemberDTO);
 	}
 
 }

@@ -69,7 +69,7 @@ async function focusOut(target) {
 }
 
 async function signup() {
-	const termsOfUse = JSON.parse(window.localStorage.getItem("termsOfUse"));
+	const termsOfUse = window.localStorage.getItem("termsOfUse");
 	if(!validSignUpData()) return;
 	
 	const userId = document.getElementById('userId').value;
@@ -103,8 +103,7 @@ async function signup() {
 		"postNumber" : postNumber,
 		"address" : address,
 		"addressDetail" : addressDetail,
-		"agree1": termsOfUse[0].agree,
-		"agree2": termsOfUse[1].agree
+		"termsOfUse": termsOfUse
 	}
 	
 	const cipherText = CryptoUtil.encrypt.AES(JSON.stringify(sendData), AES_SECRET_KEY, AES_IV);
