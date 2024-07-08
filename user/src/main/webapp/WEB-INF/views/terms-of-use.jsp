@@ -78,13 +78,17 @@
 </main>
 
 <script>
+	selectMenu('terms-of-use');
+
 	function home() {
 		location.href = "/";
 	}
 	
 	function signUp() {
-		setItem();
-		location.href = "/sign-up";
+		if(termsOfUseCheck()) {
+			setItem();
+			location.href = "/sign-up";
+		}
 	}
 	
 	function checkAll() {
@@ -95,17 +99,27 @@
 		}
 	}
 	
+	function termsOfUseCheck() {
+		let movePage = true;
+		const checkBoxList = document.querySelectorAll('.items > .check-box input[type=checkbox]');
+		for(let checkBox of checkBoxList) {
+			const essential = checkBox.dataset.essential;
+			if(essential === '1' && !checkBox.checked) {
+				movePage = false;
+				break;
+			}
+		}
+		
+		if(!movePage) alert('필수 약관에 동의해주세요.');
+		return movePage;
+	}
+	
 	function setItem() {
 		const checkBoxList = document.querySelectorAll('.items > .check-box input[type=checkbox]');
 		const checkList = new Array();
 		for(let checkBox of checkBoxList) {
 			const id = Number(checkBox.dataset.id);
 			const essential = checkBox.dataset.essential;
-			if(essential === '1' && !checkBox.checked) {
-				alert('필수 약관에 동의해주세요.');
-				return;
-			}
-			
 			if(checkBox.checked) {
 				checkList.push({"termsOfUseId":id, "agree":true});
 			}

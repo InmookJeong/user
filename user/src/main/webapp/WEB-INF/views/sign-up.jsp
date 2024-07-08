@@ -47,14 +47,7 @@
 const AES_SECRET_KEY = 'YOUR_SECRET_KEY_32_CHARACTOR_123';
 const AES_IV = 'YOUR_IV_VALUE123';
 
-const menuLink = document.getElementsByClassName('menu-link');
-for (var i = 0; i < menuLink.length; i++) {
-	menuLink[i].addEventListener('click', (event) => {
-		const btnName = event.target.dataset.btnName;
-		if(btnName === 'home') location.href = '/';
-		if(btnName === 'login') location.href = '/' + btnName;
-	});
-}
+selectMenu('terms-of-use');
 
 async function focusOut(target) {
 	const targetTag = document.getElementById(target);

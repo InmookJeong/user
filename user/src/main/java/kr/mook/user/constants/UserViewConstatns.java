@@ -12,11 +12,12 @@ package kr.mook.user.constants;
  */
 public class UserViewConstatns {
 	
+	public static final String HOME = "home";		// home page
+	public static final String TERMS_OF_USE = "terms-of-use";	// 약관동의 페이지
+	public static final String SIGNUP = "sign-up";	// 회원가입 페이지
+	
 	// COMMON PAGES
-	public static final String COMMON_HOME = "common/home";		// home page
 	public static final String COMMON_LOGIN = "common/login";	// log-in page
-	public static final String COMMON_TERMS_OF_USE = "common/terms-of-use";	// terms-of-use page
-	public static final String COMMON_SIGNUP = "common/sign-up";	// sign-up page
 	public static final String COMMON_FIND_ID = "common/find-id";	// find-id page
 	public static final String COMMON_FIND_PASSWORD = "common/find-password";	// find-password page
 	

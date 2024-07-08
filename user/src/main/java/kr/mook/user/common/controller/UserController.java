@@ -53,7 +53,7 @@ public class UserController {
 	public String home(HttpServletRequest request, HttpServletResponse response) {
 		this.setCurrentMenu(request);
 		this.setPageTitle(request, "USER");
-		return UserViewConstatns.COMMON_HOME;
+		return UserViewConstatns.HOME;
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class UserController {
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) {
 			this.setPageTitle(request, "USER");
-			return UserViewConstatns.COMMON_HOME;
+			return UserViewConstatns.HOME;
 		}
 		
 		this.setPageTitle(request, "USER - Login");
@@ -113,48 +113,7 @@ public class UserController {
 		
 		UserResultDTO userResultDTO = this.userService.logout();
 		_log.info("##### Logout result : " + userResultDTO.toString());
-		return UserViewConstatns.COMMON_HOME;
-	}
-	
-	/**
-	 * Move you to the terms of use page.
-	 * 
-	 * @param request
-	 * @return
-	 * @since 2024.06.10
-	 * @author In-mook, Jeong
-	 */
-	@RequestMapping(value = "/terms-of-use", method = RequestMethod.GET)
-	public String termsOfUse(HttpServletRequest request) {
-		this.setCurrentMenu(request);
-		
-		this.setPageTitle(request, "USER - Sign Up");
-		request.setAttribute("type", "join");
-		return UserViewConstatns.COMMON_TERMS_OF_USE;
-	}
-	
-	/**
-	 * Move you to the singup page.
-	 * 
-	 * @param request
-	 * @return
-	 * @since 2024.03.13
-	 * @author In-mook, Jeong
-	 */
-	@RequestMapping(value = "/sign-up", method = RequestMethod.GET)
-	public String signUp(HttpServletRequest request) {
-		this.setCurrentMenu(request);
-		
-		HttpSession session = request.getSession();
-		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
-		if(isAlive) {
-			this.setPageTitle(request, "USER");
-			return UserViewConstatns.COMMON_HOME;
-		}
-		
-		this.setPageTitle(request, "USER - Sign Up");
-		request.setAttribute("type", "join");
-		return UserViewConstatns.COMMON_SIGNUP;
+		return UserViewConstatns.HOME;
 	}
 	
 	/**
@@ -245,7 +204,7 @@ public class UserController {
 		
 		HttpSession session = request.getSession();
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
-		if(isAlive) return UserViewConstatns.COMMON_HOME;
+		if(isAlive) return UserViewConstatns.HOME;
 		return UserViewConstatns.COMMON_FIND_ID;
 	}
 	
@@ -279,7 +238,7 @@ public class UserController {
 		
 		HttpSession session = request.getSession();
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
-		if(isAlive) return UserViewConstatns.COMMON_HOME;
+		if(isAlive) return UserViewConstatns.HOME;
 		return UserViewConstatns.COMMON_FIND_PASSWORD;
 	}
 	
@@ -313,7 +272,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
 		if(isAlive) return UserViewConstatns.ADMIN_LIST;
-		return UserViewConstatns.COMMON_HOME;
+		return UserViewConstatns.HOME;
 	}
 	
 	private void setPageTitle(final HttpServletRequest request, final String title) {
