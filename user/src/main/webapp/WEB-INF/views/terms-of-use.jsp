@@ -1,4 +1,7 @@
+<%@page import="kr.mook.user.termsofuse.dto.TermsOfUseDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" type="text/css" href="/resources/css/sign-up.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/terms-of-use.css" />
@@ -23,52 +26,22 @@
 	</div>
 	
 	<div class="items mt-2">
-		<div class="check-box success">
-			<div class="round">
-				<input type="checkbox" id="checkSiteTermsOfUse" name="checkSiteTermsOfUse"data-id="1" data-essential="1" />
-				<label for="checkSiteTermsOfUse">
-					<span class="title">사이트 이용 약관 동의(필수)</span>
-				</label>
+		<c:forEach var="termsOfUseItem" items="${list}" varStatus="status">
+			<div class="check-box success">
+				<div class="round">
+					<input type="checkbox" id="termsOfUse-${termsOfUseItem.id}" name="termsOfUse-${termsOfUseItem.id}" data-id="${termsOfUseItem.id}" data-essential="${termsOfUseItem.essentialValue}" />
+					<label for="termsOfUse-${termsOfUseItem.id}">
+						<span class="title">${termsOfUseItem.title}<c:if test="${termsOfUseItem.essentialValue eq 1}">(필수)</c:if></span>
+					</label>
+				</div>
 			</div>
-		</div>
-		
-		<div class="description">
-			<div class="description-box">
-				<p>"사이트 이용 약관"은 사용자 관리 모듈(이하 "USER"라고 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라고 한다)를 이용함에 있어 이용자의 권리 및 의무, 책임사항을 규정함을 목적으로 합니다.</p>
-				<p>사용자 관리 모듈(이하 'USER')은 개인정보보호법에 따라 이용자의 개인정보 보호 및 권익을 보호합니다.</p>
-				<p>USER는 「정보통신망이용촉진등에관한법률」상의 개인정보보호 규정 및 정보통신부가 제정한 「개인정보보호지침」을 준수하고 있습니다.</p>
+			
+			<div class="description">
+				<div class="description-box">
+					${termsOfUseItem.contentText}
+				</div>
 			</div>
-		</div>
-		
-		<div class="check-box success">
-			<div class="round">
-				<input type="checkbox" id="checkUserInfoTermsOfUse" name="checkUserInfoTermsOfUse" data-id="2" data-essential="1" />
-				<label for="checkUserInfoTermsOfUse">
-					<span class="title">개인정보 수집 및 제공 동의 약관 동의(필수)</span>
-				</label>
-			</div>
-		</div>
-		
-		<div class="description">
-			<div class="description-box">
-				<p>"USER"는 아래 나열된 사용자 정보를 수집하고 이용합니다.</p>
-				<p>수집 대상 사용자 정보</p>
-				<ul>
-					<li>이름</li>
-					<li>이메일</li>
-					<li>휴대전화번호</li>
-					<li>생년월일</li>
-					<li>성별</li>
-					<li>주소</li>
-				</ul>
-				<p>수집된 개인정보는 다음과 같이 활용됩니다.</p>
-				<ul>
-					<li>이용자 식별 및 본인여부 확인</li>
-					<li>서비스 이용에 관한 통지</li>
-					<li>고객문의(CS) 대응을 위한 개인정보 수집</li>
-				</ul>
-			</div>
-		</div>
+		</c:forEach>
 	</div>
 	
 	<div class="button-group d-flex justify-content-space-between mb-2">

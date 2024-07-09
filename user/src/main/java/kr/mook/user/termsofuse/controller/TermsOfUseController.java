@@ -2,15 +2,18 @@ package kr.mook.user.termsofuse.controller;
 
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.mook.user.constants.UserViewConstatns;
+import kr.mook.user.termsofuse.service.TermsOfUseService;
 
 /**
  * <strong>TermsOfUseController</strong><br/>
+ * <em>- Type : Class</em><br/>
  * <br/>
  * 
  * 1. TermsOfUseController에 대한 설명<br/>
@@ -48,8 +51,12 @@ public class TermsOfUseController {
 	// TermsOfUseController Logger
 	private final Logger _log = Logger.getLogger(TermsOfUseController.class.getName());
 	
+	@Autowired
+	private TermsOfUseService termsOfUseService;
+	
 	/**
 	 * <strong>termsOfUse</strong><br/>
+	 * <em>- Type : Method</em><br/>
 	 * <br/>
 	 * 
 	 * 1. termsOfUse에 대한 설명<br/>
@@ -62,7 +69,7 @@ public class TermsOfUseController {
 	 * <br/>
 	 * 
 	 * 3. termsOfUse 수정 이력<br/>
-	 * - 2024. 07. 06 : Method 작성<br/>
+	 * - 2024. 07. 08 : Method 작성<br/>
 	 * <br/>
 	 * 
 	 * @return ModelAndView
@@ -76,7 +83,7 @@ public class TermsOfUseController {
 	public ModelAndView termsOfUse() {
 		_log.info("##### 사이트 이용 약관 페이지로 이동.");
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("", "");
+		mv.addObject("list", this.termsOfUseService.listTermsOfUseInUse());
 		mv.setViewName(UserViewConstatns.TERMS_OF_USE);
 		return mv;
 	}

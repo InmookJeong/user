@@ -36,7 +36,7 @@
 			<table class="w-100p h-100p">
 				<tr>
 					<td class="menu-link w-33p cursor-pointer font-bold-hover bg-color-light-gray-hover" onclick="signup()">회원가입</td>
-					<td class="menu-link w-33p cursor-pointer font-bold-hover bg-color-light-gray-hover" data-btn-name="home">Home</td>
+					<td class="menu-link w-33p cursor-pointer font-bold-hover bg-color-light-gray-hover" onclick="home()">Home</td>
 				</tr>
 			</table>
 		</div>
@@ -48,6 +48,10 @@ const AES_SECRET_KEY = 'YOUR_SECRET_KEY_32_CHARACTOR_123';
 const AES_IV = 'YOUR_IV_VALUE123';
 
 selectMenu('terms-of-use');
+
+function home() {
+	location.href = "/";
+}
 
 async function focusOut(target) {
 	const targetTag = document.getElementById(target);
