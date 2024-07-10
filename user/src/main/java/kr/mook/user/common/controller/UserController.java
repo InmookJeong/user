@@ -117,23 +117,6 @@ public class UserController {
 	}
 	
 	/**
-	 * This method processes membership registration by storing the information entered by the user.
-	 * 
-	 * @param request
-	 * @param memberDTO
-	 * @return
-	 * @since 2024.03.13
-	 * @author In-mook, Jeong
-	 */
-	@RequestMapping(value = "/sign-up", method = RequestMethod.POST)
-	@ResponseBody
-	public UserResultDTO signUp(HttpServletRequest request, @RequestBody String encryptedSignUpData) throws JsonParseException, Exception {
-		_log.info("##### Execute sign up processing.");
-		UserResultDTO userResultDTO = this.userService.signUp(encryptedSignUpData);
-		return userResultDTO;
-	}
-	
-	/**
 	 * This method checks whether the userId entered by the user when signing up has already been registered.
 	 * 
 	 * @param request

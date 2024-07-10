@@ -12,7 +12,7 @@ import kr.mook.user.termsofuse.service.TermsOfUseService;
 
 /**
  * <strong>TermsOfUseServiceImpl</strong><br/>
- * <em>- Type : Method</em><br/>
+ * <em>- Type : Class</em><br/>
  * <br/>
  * 
  * 1. TermsOfUseServiceImpl에 대한 설명<br/>

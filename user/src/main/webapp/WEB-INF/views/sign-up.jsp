@@ -104,7 +104,16 @@ async function signup() {
 	}
 	
 	const cipherText = CryptoUtil.encrypt.AES(JSON.stringify(sendData), AES_SECRET_KEY, AES_IV);
-	const returnText = await HttpUtil.post('/sign-up', cipherText, HttpUtil.RETURN_TYPE.TEXT);
+	const returnText = await HttpUtil.post('/sign-up', cipherText, HttpUtil.RETURN_TYPE.JSON);
+	
+	if(returnText.status === 'SNU-200') {
+		alert(returnText.statusMessage.kor);
+		location.href = "/login";
+	} else if(returnText.status === 'SNU-400') {
+		alert(returnText.statusMessage.kor);
+	} else {
+		alert('회원가입 중 시스템 오류가 발생하였습니다. 관리자에게 문의해주세요.')
+	}
 }
 
 function validSignUpData() {
