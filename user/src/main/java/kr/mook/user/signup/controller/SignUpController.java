@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -86,6 +87,8 @@ import kr.mook.user.signup.service.SignUpService;
  * &emsp; - UserResourceController → UserController<br/>
  * - 2024. 07. 06 : 회원가입 전용 Controller 분리<br/>
  * &emsp; - SignUpController<br/>
+ * - 2024. 07. 09 : 회원가입 처리를 위한 API 작성<br/>
+ * - 2024. 07. 10 : 회원가입을 위해 입력한 아이디, 휴대전화번호, 이메일의 중복 확인을 위한 API 작성<br/>
  * <br/>
  * 
  * @since 2024. 07. 06
@@ -182,5 +185,95 @@ public class SignUpController {
 	public UserResultDTO signUp(@RequestBody String encryptedSignUpData) throws JsonParseException, Exception {
 		_log.info("##### 회원가입 처리 시작.");
 		return this.signUpService.signUp(encryptedSignUpData);
+	}
+	
+	/**
+	 * <strong>checkDuplicationUserId</strong><br/>
+	 * <br/>
+	 * 
+	 * 1. checkDuplicationUserId에 대한 설명<br/>
+	 * - 회원 가입을 위해 사용자가 입력한 아이디(계정)가 데이터베이스에 이미 저장되어 있는지 확인합니다.<br/>
+	 * - 아이디(계정)가 데이터베이스에 이미 저장되어 있는 경우에는 1을, 아닌 경우에는 0을 반환하여 중복 여부를 알려줍니다.<br/>
+	 * <br/>
+	 * 
+	 * 2. HTTP Method<br/>
+	 * - GET<br/>
+	 * <br/>
+	 * 
+	 * 3. checkDuplicationUserId 수정 이력<br/>
+	 * - 2024. 07. 10 : Method 작성<br/>	
+	 * <br/>
+	 * 
+	 * @param userId 회원가입 시 사용자가 입력한 아이디(계정)
+	 * @return userId가 중복되면 1, 중복되지 않으면 0을 반환
+	 * @since 2024. 07. 10
+	 * @author In-mook, Jeong
+	 * @version 1.0.0
+	 */
+	@RequestMapping(value = "/check/duplication/userId", method = RequestMethod.GET)
+	@ResponseBody
+	public int checkDuplicationUserId(@RequestParam("userId") String userId) {
+		_log.info("##### 아이디 중복 확인 시작.");
+		return this.signUpService.checkDuplicationUserId(userId);
+	}
+	
+	/**
+	 * <strong>checkDuplicationPhone</strong><br/>
+	 * <br/>
+	 * 
+	 * 1. checkDuplicationPhone에 대한 설명<br/>
+	 * - 회원 가입을 위해 사용자가 입력한 휴대전화번호가 데이터베이스에 이미 저장되어 있는지 확인합니다.<br/>
+	 * - 휴대전화번호가 데이터베이스에 이미 저장되어 있는 경우에는 1을, 아닌 경우에는 0을 반환하여 중복 여부를 알려줍니다.<br/>
+	 * <br/>
+	 * 
+	 * 2. HTTP Method<br/>
+	 * - GET<br/>
+	 * <br/>
+	 * 
+	 * 3. checkDuplicationPhone 수정 이력<br/>
+	 * - 2024. 07. 10 : Method 작성<br/>	
+	 * <br/>
+	 * 
+	 * @param phone 회원가입 시 사용자가 입력한 이메일
+	 * @return 휴대전화번호가 중복되면 1, 중복되지 않으면 0을 반환
+	 * @since 2024. 07. 10
+	 * @author In-mook, Jeong
+	 * @version 1.0.0
+	 */
+	@RequestMapping(value = "/check/duplication/phone", method = RequestMethod.GET)
+	@ResponseBody
+	public int checkDuplicationPhone(@RequestParam("phone") String phone) {
+		_log.info("##### 휴대전화번호 중복 확인 시작.");
+		return this.signUpService.checkDuplicationPhone(phone);
+	}
+	
+	/**
+	 * <strong>checkDuplicationEmail</strong><br/>
+	 * <br/>
+	 * 
+	 * 1. checkDuplicationEmail에 대한 설명<br/>
+	 * - 회원 가입을 위해 사용자가 입력한 이메일이 데이터베이스에 이미 저장되어 있는지 확인합니다.<br/>
+	 * - 이메일이 데이터베이스에 이미 저장되어 있는 경우에는 1을, 아닌 경우에는 0을 반환하여 중복 여부를 알려줍니다.<br/>
+	 * <br/>
+	 * 
+	 * 2. HTTP Method<br/>
+	 * - GET<br/>
+	 * <br/>
+	 * 
+	 * 3. checkDuplicationEmail 수정 이력<br/>
+	 * - 2024. 07. 10 : Method 작성<br/>	
+	 * <br/>
+	 * 
+	 * @param email 회원가입 시 사용자가 입력한 이메일
+	 * @return email이 중복되면 1, 중복되지 않으면 0을 반환
+	 * @since 2024. 07. 10
+	 * @author In-mook, Jeong
+	 * @version 1.0.0
+	 */
+	@RequestMapping(value = "/check/duplication/email", method = RequestMethod.GET)
+	@ResponseBody
+	public int checkDuplicationEmail(@RequestParam("email") String email) {
+		_log.info("##### 이메일 중복 확인 시작.");
+		return this.signUpService.checkDuplicationEmail(email);
 	}
 }

@@ -5,11 +5,11 @@
 		<h1 class="pb-2">Sign Up</h1>
 		
 		<form class="box w-20rem h-30rem p2 sign-form scroll-y">
-			<input type="text" class="w-95p h-2rem mt-1" id="userId" name="userId" value="" placeholder="아이디 입력" onfocusout="focusOut('userId')" data-tag-name="아이디" />
-			<input type="password" class="w-95p h-2rem mt-1" id="password" name="password" value="" placeholder="비밀번호 입력" data-tag-name="비밀번호" />
-			<input type="password" class="w-95p h-2rem mt-1" id="password2" name="password2" value="" placeholder="비밀번호 재입력" data-tag-name="비밀번호2" />
+			<input type="text" class="w-95p h-2rem mt-1" id="userId" name="userId" value="" placeholder="아이디 입력" data-required="1" data-duplicate-check="1" data-empty-message="아이디를 입력해줘!" onfocusout="focusOut('userId')" data-tag-name="아이디" />
+			<input type="password" class="w-95p h-2rem mt-1" id="password" name="password" value="" placeholder="비밀번호 입력" data-required="1" data-duplicate-check="0" data-empty-message="비밀번호를 입력해줘!" data-tag-name="비밀번호" />
+			<input type="password" class="w-95p h-2rem mt-1" id="password2" name="password2" value="" placeholder="비밀번호 재입력" data-required="1" data-duplicate-check="0" data-empty-message="비밀번호를 한 번 더 입력해줘!" data-tag-name="비밀번호2" />
 			
-			<input type="text" class="w-95p h-2rem mt-1" id="name" name="name" value="" placeholder="이름 입력" data-tag-name="이름" />
+			<input type="text" class="w-95p h-2rem mt-1" id="name" name="name" value="" placeholder="이름 입력" data-required="1" data-duplicate-check="0" data-empty-message="이름을 입력해줘!" data-tag-name="이름" />
 			<label>
 				<input type="radio" class="h-2rem mt-1" name="gender" value="M" data-tag-name="성별" />남자
 			</label>
@@ -17,19 +17,18 @@
 				<input type="radio" class="h-2rem mt-1" name="gender" value="W" data-tag-name="성별" />여자
 			</label>
 			
-			<input type="date" class="w-95p h-2rem mt-1" id="birth" name="birth" value="" placeholder="생년월일 입력" data-tag-name="생년월일" />
-			<input type="tel" class="w-95p h-2rem mt-1" id="phone" name="phone" value="" placeholder="휴대전화번호 입력" onfocusout="focusOut('phone')" data-tag-name="휴대전화번호" />
-			<input type="email" class="w-95p h-2rem mt-1" id="email" name="email" value="" placeholder="이메일 입력" onfocusout="focusOut('email')" data-tag-name="이메일" />
+			<input type="date" class="w-95p h-2rem mt-1" id="birth" name="birth" value="" placeholder="생년월일 입력" data-required="1" data-duplicate-check="0" data-empty-message="생년월일을 입력해줘!" data-tag-name="생년월일" />
+			<input type="tel" class="w-95p h-2rem mt-1" id="phone" name="phone" value="" placeholder="휴대전화번호 입력" data-required="1" data-duplicate-check="1" data-empty-message="휴대전화번호를 입력해줘!" onfocusout="focusOut('phone')" data-tag-name="휴대전화번호" />
+			<input type="email" class="w-95p h-2rem mt-1" id="email" name="email" value="" placeholder="이메일 입력" data-required="1" data-duplicate-check="1" data-empty-message="이메일을 입력해줘!" onfocusout="focusOut('email')" data-tag-name="이메일" />
 			
-			<!-- <input type="text" class="w-95p h-2rem mt-1" id="nation" name="nation" value="" placeholder="국가 입력" data-tag-name="국가" /> -->
 			<select class="w-95p h-2rem mt-1" id="nation" name="nation">
 				<option value="">국가를 선택해주세요.</option>
 				<option value="82">대한민국</option>
 			</select>
 			
-			<input type="text" class="w-95p h-2rem mt-1" id="postNumber" name="postNumber" value="" placeholder="우편번호 입력" data-tag-name="우편번호" />
-			<input type="text" class="w-95p h-2rem mt-1" id="address" name="address" value="" placeholder="주소 입력" data-tag-name="주소" />
-			<input type="text" class="w-95p h-2rem mt-1" id="addressDetail" name="addressDetail" value="" placeholder="상세주소 입력" data-tag-name="상세주소" />
+			<input type="text" class="w-95p h-2rem mt-1" id="postNumber" name="postNumber" value="" placeholder="우편번호 입력" data-required="0" data-duplicate-check="0" data-tag-name="우편번호" />
+			<input type="text" class="w-95p h-2rem mt-1" id="address" name="address" value="" placeholder="주소 입력" data-required="0" data-duplicate-check="0" data-tag-name="주소" />
+			<input type="text" class="w-95p h-2rem mt-1" id="addressDetail" name="addressDetail" value="" placeholder="상세주소 입력" data-required="0" data-duplicate-check="0" data-tag-name="상세주소" />
 		</form>
 		
 		<div class="box w-20rem h-3rem mt-5px pl-2 pr-2 sign-form-button">
@@ -43,26 +42,16 @@
 	</section>
 </main>
 
-<script>
-const AES_SECRET_KEY = 'YOUR_SECRET_KEY_32_CHARACTOR_123';
-const AES_IV = 'YOUR_IV_VALUE123';
+<script src="/resources/js/signup/sign-up.js"></script>
 
-selectMenu('terms-of-use');
+<script>
+/* const AES_SECRET_KEY = 'YOUR_SECRET_KEY_32_CHARACTOR_123';
+const AES_IV = 'YOUR_IV_VALUE123'; */
+const AES_SECRET_KEY = 'Ae34Dm84*dc2DgEyz83AA39Bed_TCO==';
+const AES_IV = 'ivS*A7oo_ecY6nc3';
 
 function home() {
 	location.href = "/";
-}
-
-async function focusOut(target) {
-	const targetTag = document.getElementById(target);
-	const targetData = targetTag.value;
-	const tagName = targetTag.dataset.tagName;
-	const url = '/check-' + target + '?' + target + '='+ targetData;
-	const result = await HttpUtil.get(url, HttpUtil.RETURN_TYPE.TEXT);
-	if(result == 0) {
-		alert(tagName + '이(가) 중복됩니다.');
-		targetTag.value = '';
-	}
 }
 
 async function signup() {

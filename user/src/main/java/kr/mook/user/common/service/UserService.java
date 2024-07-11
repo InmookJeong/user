@@ -2,8 +2,6 @@ package kr.mook.user.common.service;
 
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonParseException;
-
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.common.dto.UserResultDTO;
@@ -39,50 +37,6 @@ public interface UserService {
 	 * @author In-mook, Jeong
 	 */
 	public UserResultDTO logout();
-	
-	/**
-	 * This method checks if the userId exists.<br/>
-	 * Returns true if userId exists, false if not.
-	 * 
-	 * @param userId
-	 * @return
-	 * @since 2024.03.13
-	 * @author In-mook, Jeong
-	 */
-	public boolean existUserId(String userId);
-	
-	/**
-	 * This method checks if the email exists.<br/>
-	 * Returns true if email exists, false if not.
-	 * 
-	 * @param email
-	 * @return
-	 * @since 2024.03.13
-	 * @author In-mook, Jeong
-	 */
-	public boolean existEmail(String email);
-	
-	/**
-	 * This method checks if the phone number exists.<br/>
-	 * Returns true if phone number exists, false if not.
-	 * 
-	 * @param phone
-	 * @return
-	 * @since 2024.03.13
-	 * @author In-mook, Jeong
-	 */
-	public boolean existPhoneNumber(String phone);
-	
-	/**
-	 * This method processes membership registration by storing the information entered by the user.<br/>
-	 * Returns true if registration is successful and false if registration fails.
-	 * 
-	 * @param memberDTO
-	 * @return
-	 * @since 2024.03.13
-	 * @author In-mook, Jeong
-	 */
-	public UserResultDTO signUp(String encryptedSignUpData) throws JsonParseException, Exception ;
 	
 	/**
 	 * This method provides the function to find the userId.<br/>

@@ -8,13 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonParseException;
-
-import kr.mook.crypto.DecryptUtil;
 import kr.mook.crypto.EncryptUtil;
-import kr.mook.datatype.JsonUtil;
 import kr.mook.user.common.dto.LoginDTO;
-import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.common.dto.UserResultContentDTO;
 import kr.mook.user.common.dto.UserResultDTO;
@@ -91,73 +86,6 @@ public class UserServiceImpl implements UserService {
 		
 //		userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_LOGOUT_SUCCESS);
 		userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_LOGOUT_FAILED);
-		
-		return userResultDTO;
-	}
-
-	@Override
-	public boolean existUserId(String userId) {
-		if(this.memberDao.countByUserId(userId) > 0) {
-			return true;
-		}
-		
-		return false;
-	}
-
-	@Override
-	public boolean existEmail(String email) {
-		if(this.memberDao.countByEmail(email) > 0) {
-			return true;
-		}
-		
-		return false;
-	}
-
-	@Override
-	public boolean existPhoneNumber(String phone) {
-		if(this.memberDao.countByPhone(phone) > 0) {
-			return true;
-		}
-		
-		return false;
-	}
-
-	@Override
-	public UserResultDTO signUp(String encryptedSignUpData) throws JsonParseException, Exception {
-		UserResultDTO userResultDTO = new UserResultDTO("Sign-up");
-		String signUpData = DecryptUtil.fromAES(encryptedSignUpData, AES_SECRET_KEY, AES_IV);
-		SignUpDTO signUpDto = (SignUpDTO) JsonUtil.stringToObject(signUpData, SignUpDTO.class);
-		int id = this.memberDao.getNextId();
-		signUpDto.setId(id);
-		
-		List<TermsOfUseMemberDTO> termsOfUseMemberList = JsonUtil.stringToList(signUpDto.getTermsOfUse(), TermsOfUseMemberDTO.class);
-		for(TermsOfUseMemberDTO termsOfUseMember : termsOfUseMemberList) {
-			termsOfUseMember.setMemberId(signUpDto.getId());
-		}
-		signUpDto.setTermsOfUseMemberList(termsOfUseMemberList);
-		
-		try {
-			// Insert Member
-			this.memberDao.insertMember(signUpDto);
-			
-			// Insert TermsOfUse
-			this.addTermsOfUsemember(signUpDto.getTermsOfUseMemberList());
-			userResultDTO.setStatus(
-				StatusEnum.SIGNUP_SUCCESS.getStatus(),
-				StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
-				StatusEnum.SIGNUP_SUCCESS.getStatusKorMessage()
-			);
-			
-			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
-		} catch (Exception e) {
-			userResultDTO.setStatus(
-				StatusEnum.SIGNUP_FAILED.getStatus(),
-				StatusEnum.SIGNUP_FAILED.getStatusEngMessage(),
-				StatusEnum.SIGNUP_FAILED.getStatusKorMessage()
-			);
-			
-			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_FAILED);
-		}
 		
 		return userResultDTO;
 	}

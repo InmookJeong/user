@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.mook.user.common.dto.LoginDTO;
-import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.member.dao.MemberDao;
 import kr.mook.user.member.dto.MemberDTO;
@@ -25,21 +24,6 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public int countByUserId(String userId) {
-		return sqlSession.selectOne(NAME_SPACE+".countByUserId", userId);
-	}
-	
-	@Override
-	public int countByPhone(String phone) {
-		return sqlSession.selectOne(NAME_SPACE+".countByPhone", phone);
-	}
-	
-	@Override
-	public int countByEmail(String email) {
-		return sqlSession.selectOne(NAME_SPACE+".countByEmail", email);
-	}
-	
-	@Override
 	public int countByMemberDto(MemberDTO memberDTO) {
 		return sqlSession.selectOne(NAME_SPACE+".countByMemberDto", memberDTO);
 	}
@@ -54,11 +38,6 @@ public class MemberDaoImpl implements MemberDao {
 		return sqlSession.selectOne(NAME_SPACE+".getNextId");
 	}
 
-	@Override
-	public void insertMember(SignUpDTO signUpDTO) {
-		sqlSession.insert(NAME_SPACE+".insertMember", signUpDTO);
-	}
-	
 	@Override
 	public void updateTempPassword(MemberDTO memberDTO) {
 		sqlSession.update(NAME_SPACE+".updateTempPassword", memberDTO);
