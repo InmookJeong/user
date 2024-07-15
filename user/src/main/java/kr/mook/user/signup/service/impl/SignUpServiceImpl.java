@@ -10,14 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.core.JsonParseException;
 
-import kr.mook.crypto.DecryptUtil;
 import kr.mook.datatype.JsonUtil;
-import kr.mook.user.common.dto.SignUpDTO;
-import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.constants.StatusEnum;
 import kr.mook.user.constants.UserMessageConstants;
 import kr.mook.user.signup.dao.SignUpDao;
+import kr.mook.user.signup.dto.SignUpDTO;
+import kr.mook.user.signup.dto.TermsOfUseMemberDTO;
 import kr.mook.user.signup.service.SignUpService;
 
 /**
@@ -45,7 +44,7 @@ import kr.mook.user.signup.service.SignUpService;
 public class SignUpServiceImpl implements SignUpService {
 
 	// SignUpServiceImpl Logger
-	private final Logger _log = Logger.getLogger(SignUpServiceImpl.class.getName());
+	private final Logger _log = Logger.getLogger(SignUpService.class.getName());
 	
 	// AES 암복호화 Key
 	@Value("${Crypto.AES.SecretKey}")

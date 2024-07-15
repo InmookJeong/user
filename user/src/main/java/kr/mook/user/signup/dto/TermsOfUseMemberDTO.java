@@ -1,4 +1,4 @@
-package kr.mook.user.common.dto;
+package kr.mook.user.signup.dto;
 
 public class TermsOfUseMemberDTO {
 	

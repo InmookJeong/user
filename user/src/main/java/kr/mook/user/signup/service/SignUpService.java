@@ -2,8 +2,8 @@ package kr.mook.user.signup.service;
 
 import com.fasterxml.jackson.core.JsonParseException;
 
-import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultDTO;
+import kr.mook.user.signup.dto.SignUpDTO;
 
 /**
  * <strong>SignUpService</strong><br/>
@@ -19,7 +19,7 @@ import kr.mook.user.common.dto.UserResultDTO;
  * - 2024. 07. 10 : 회원가입을 위해 입력한 아이디의 중복 확인을 위한 Method 작성<br/>
  * <br/>
  * 
- * @since 2024. 07. 08
+ * @since 2024. 07. 09
  * @author In-mook, Jeong
  * @version 1.0.0
  */

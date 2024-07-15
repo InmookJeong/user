@@ -1,9 +1,7 @@
 package kr.mook.user.signup.dao;
 
-import java.util.List;
-
-import kr.mook.user.common.dto.SignUpDTO;
-import kr.mook.user.common.dto.TermsOfUseMemberDTO;
+import kr.mook.user.signup.dto.SignUpDTO;
+import kr.mook.user.signup.dto.TermsOfUseMemberDTO;
 
 /**
  * <strong>SignUpDao</strong><br/>

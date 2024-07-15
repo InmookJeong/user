@@ -1,15 +1,13 @@
 package kr.mook.user.signup.dao.impl;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import kr.mook.user.common.dto.SignUpDTO;
-import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.signup.dao.SignUpDao;
+import kr.mook.user.signup.dto.SignUpDTO;
+import kr.mook.user.signup.dto.TermsOfUseMemberDTO;
 
 /**
  * <strong>SignUpDaoImpl</strong><br/>

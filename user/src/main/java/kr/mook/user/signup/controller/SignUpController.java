@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 
-import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.constants.UserViewConstatns;
+import kr.mook.user.signup.dto.SignUpDTO;
 import kr.mook.user.signup.service.SignUpService;
 
 /**
