@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParseException;
 
+import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.constants.UserViewConstatns;
 import kr.mook.user.signup.service.SignUpService;
@@ -182,9 +183,9 @@ public class SignUpController {
 	 */
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	@ResponseBody
-	public UserResultDTO signUp(@RequestBody String encryptedSignUpData) throws JsonParseException, Exception {
+	public UserResultDTO signUp(@RequestBody SignUpDTO SignUpDto) throws JsonParseException, Exception {
 		_log.info("##### 회원가입 처리 시작.");
-		return this.signUpService.signUp(encryptedSignUpData);
+		return this.signUpService.signUp(SignUpDto);
 	}
 	
 	/**

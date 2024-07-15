@@ -1,7 +1,7 @@
 -- DROP TABLE MEMBER;
 
 CREATE TABLE MEMBER (
-	id bigint comment '아이디',
+	id bigint comment '아이디' auto_increment,
     userId VARCHAR(50) NOT NULL UNIQUE comment '사용자 아이디',
     password VARCHAR(200) NOT NULL comment '비밀번호',
     name VARCHAR(1000) NOT NULL comment '이름',

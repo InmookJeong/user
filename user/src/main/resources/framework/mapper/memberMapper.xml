@@ -5,7 +5,7 @@
 
 <mapper namespace="kr.mook.user.dao.MemberMapper">
 	
-	<select id="countByLoginDto" parameterType="kr.mook.user.common.dto.LoginDTO" resultType="int">
+	<!-- <select id="countByLoginDto" parameterType="kr.mook.user.common.dto.LoginDTO" resultType="int">
 		/** MemberMapper.countByLoginDto */
 		SELECT
 			COUNT(M.id)
@@ -14,7 +14,7 @@
 		WHERE
 			M.userId = #{userId}
 			AND M.password = #{password}
-	</select>
+	</select> -->
 	
 	<select id="countByMemberDto" parameterType="kr.mook.user.member.dto.MemberDTO" resultType="int">
 		/** MemberMapper.countByEmail */

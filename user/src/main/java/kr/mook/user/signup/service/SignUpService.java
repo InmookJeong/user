@@ -1,5 +1,8 @@
 package kr.mook.user.signup.service;
 
+import com.fasterxml.jackson.core.JsonParseException;
+
+import kr.mook.user.common.dto.SignUpDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 
 /**
@@ -59,11 +62,13 @@ public interface SignUpService {
 	 * 		&emsp;&emsp;    "contentType" : "STRING",<br/>
 	 * 		&emsp;&emsp;    "content" : "회원가입이 되지 않았습니다. 관리자에게 문의해주세요.",<br/>
 	 * 		&emsp;    }<br/>
+	 * @throws JsonParseException
+	 * @throws Exception
 	 * @since 2024. 07. 09
 	 * @author In-mook, Jeong
 	 * @version 1.0.0
 	 */
-	public UserResultDTO signUp(String encryptedSignUpData);
+	public UserResultDTO signUp(SignUpDTO signUpDto) throws JsonParseException, Exception;
 	
 	/**
 	 * <strong>checkDuplicationUserId</strong><br/>

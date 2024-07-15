@@ -45,10 +45,8 @@
 <script src="/resources/js/signup/sign-up.js"></script>
 
 <script>
-/* const AES_SECRET_KEY = 'YOUR_SECRET_KEY_32_CHARACTOR_123';
-const AES_IV = 'YOUR_IV_VALUE123'; */
-const AES_SECRET_KEY = 'Ae34Dm84*dc2DgEyz83AA39Bed_TCO==';
-const AES_IV = 'ivS*A7oo_ecY6nc3';
+const AES_SECRET_KEY = 'YOUR_SECRET_KEY_32_CHARACTOR_123';
+const AES_IV = 'YOUR_IV_VALUE123';
 
 function home() {
 	location.href = "/";
@@ -92,8 +90,9 @@ async function signup() {
 		"termsOfUse": termsOfUse
 	}
 	
-	const cipherText = CryptoUtil.encrypt.AES(JSON.stringify(sendData), AES_SECRET_KEY, AES_IV);
-	const returnText = await HttpUtil.post('/sign-up', cipherText, HttpUtil.RETURN_TYPE.JSON);
+	/* const cipherText = CryptoUtil.encrypt.AES(JSON.stringify(sendData), AES_SECRET_KEY, AES_IV);
+	const returnText = await HttpUtil.post('/sign-up', cipherText, HttpUtil.RETURN_TYPE.JSON); */
+	const returnText = await HttpUtil.post('/sign-up', sendData, HttpUtil.RETURN_TYPE.JSON);
 	
 	if(returnText.status === 'SNU-200') {
 		alert(returnText.statusMessage.kor);

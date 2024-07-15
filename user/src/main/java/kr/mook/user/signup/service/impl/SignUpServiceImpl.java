@@ -1,10 +1,19 @@
 package kr.mook.user.signup.service.impl;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.core.JsonParseException;
+
+import kr.mook.crypto.DecryptUtil;
+import kr.mook.datatype.JsonUtil;
+import kr.mook.user.common.dto.SignUpDTO;
+import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.constants.StatusEnum;
 import kr.mook.user.constants.UserMessageConstants;
@@ -19,7 +28,8 @@ import kr.mook.user.signup.service.SignUpService;
  * 1. SignUpServiceImpl에 대한 설명<br/>
  * - SignUpServiceImpl는 회원 가입과 관련된 기능을 담당하는 Service 구현체이며,<br/>
  * - SignUpService에 작성된 Method의 비즈니스 로직을 구현합니다.<br/>
- * - 회원 가입 정보를 입력할 때 아이디, 휴대전화번호, 이메일의 중복 여부를 확인하거나, 회원 가입 정보를 저장하기 위한 기능을 담당합니다.<br/>
+ * - 회원 가입 정보를 입력할 때 아이디, 휴대전화번호, 이메일의 중복 여부를 확인하거나, 회원 가입 정보를 저장하기 위한 기능을
+ * 담당합니다.<br/>
  * <br/>
  * 
  * 2. SignUpServiceImpl 수정 이력<br/>
@@ -33,57 +43,82 @@ import kr.mook.user.signup.service.SignUpService;
  */
 @Service
 public class SignUpServiceImpl implements SignUpService {
-	
+
 	// SignUpServiceImpl Logger
 	private final Logger _log = Logger.getLogger(SignUpServiceImpl.class.getName());
 	
+	// AES 암복호화 Key
+	@Value("${Crypto.AES.SecretKey}")
+	private String AES_SECRET_KEY;
+	
+	// AES 암복호화 IV
+	@Value("${Crypto.AES.IV}")
+	private String AES_IV;
+
 	@Autowired
 	private SignUpDao signUpDao;
 
+	@Transactional
 	@Override
-	public UserResultDTO signUp(String encryptedSignUpData) {
+	public UserResultDTO signUp(SignUpDTO signUpDto) throws JsonParseException, Exception {
 		UserResultDTO userResultDTO = new UserResultDTO("Sign-up");
 		
-		// 성공
-		userResultDTO.setStatus(
-				StatusEnum.SIGNUP_SUCCESS.getStatus(),
-				StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
-				UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS
+		// SingUp
+		int insertMemberCount = this.signUpDao.insertMember(signUpDto);
+		List<TermsOfUseMemberDTO> termsOfUseMembers = JsonUtil.stringToList(signUpDto.getTermsOfUse(), TermsOfUseMemberDTO.class);
+		
+		// TermsMember Insert
+		int insertTermsMemberCount = 0;
+		if(insertMemberCount > 0) {
+			int memberId = this.signUpDao.selectIdByUserId(signUpDto.getUserId());
+			for(TermsOfUseMemberDTO termsOfUseMember : termsOfUseMembers) {
+				termsOfUseMember.setMemberId(memberId);
+				insertTermsMemberCount += this.signUpDao.insertTermsOfUseMembers(termsOfUseMember);
+			}
+		}
+		
+		if(insertMemberCount > 0 && insertTermsMemberCount == termsOfUseMembers.size()) {
+			// 성공
+			userResultDTO.setStatus(StatusEnum.SIGNUP_SUCCESS.getStatus(), StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
+					UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
+			
+			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
+		} else {
+			// 실패
+			userResultDTO.setStatus(
+				StatusEnum.SIGNUP_FAILED.getStatus(),
+				StatusEnum.SIGNUP_FAILED.getStatusEngMessage(),
+				UserMessageConstants.MESSAGE_SIGN_UP_FAILED
 			);
 			
-		userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
-		
-		// 실패
-//		userResultDTO.setStatus(
-//			StatusEnum.SIGNUP_FAILED.getStatus(),
-//			StatusEnum.SIGNUP_FAILED.getStatusEngMessage(),
-//			UserMessageConstants.MESSAGE_SIGN_UP_FAILED
-//		);
-//		
-//		userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_FAILED);
-		
+			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_FAILED);
+		}
+
 		return userResultDTO;
 	}
 
 	@Override
 	public int checkDuplicationUserId(String userId) {
 		_log.info("##### 중복 확인 대상 아이디 : " + userId);
-		if(this.signUpDao.countByUserId(userId) > 0) return 1;
+		if (this.signUpDao.countByUserId(userId) > 0)
+			return 1;
 		return 0;
 	}
 
 	@Override
 	public int checkDuplicationPhone(String phone) {
 		_log.info("##### 중복 확인 대상 휴대전화번호 : " + phone);
-		if(this.signUpDao.countByPhone(phone) > 0) return 1;
+		if (this.signUpDao.countByPhone(phone) > 0)
+			return 1;
 		return 0;
 	}
 
 	@Override
 	public int checkDuplicationEmail(String email) {
 		_log.info("##### 중복 확인 대상 이메일 : " + email);
-		if(this.signUpDao.countByEmail(email) > 0) return 1;
+		if (this.signUpDao.countByEmail(email) > 0)
+			return 1;
 		return 0;
 	}
-
+	
 }

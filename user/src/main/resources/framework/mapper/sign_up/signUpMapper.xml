@@ -35,4 +35,67 @@
 			M.email = #{email}
 	</select>
 	
+	<insert id="insertMember" parameterType="kr.mook.user.common.dto.SignUpDTO">
+		/** SignUpMapper.insertMember */
+		INSERT INTO MEMBER(
+			userId,
+			password,
+			name,
+			birth,
+			gender,
+			phone,
+			email,
+			nation,
+			postNumber,
+			address,
+			addressDetail,
+			createDate,
+			isActive,
+			isTempPassword,
+			isAdmin
+		) VALUES (
+			#{userId},
+			#{password},
+			#{name},
+			#{birth},
+			#{gender},
+			#{phone},
+			#{email},
+			#{nation},
+			#{postNumber},
+			#{address},
+			#{addressDetail},
+			now(),
+			1,
+			0,
+			0
+		)
+	</insert>
+	
+	<select id="selectIdByUserId" parameterType="String" resultType="Integer">
+		SELECT
+			id
+		FROM
+			MEMBER
+		WHERE
+			userId = #{userId}
+	</select>
+	
+	<insert id="insertTermsOfUseMembers" parameterType="kr.mook.user.common.dto.TermsOfUseMemberDTO">
+		/** SignUpMapper.insertTermsOfUseMembers */
+		INSERT INTO TERMS_OF_USE_MEMBERS (
+			termsOfUseId,
+			memberId,
+			isAgree,
+			createMemberId,
+			createDate
+		) VALUES (
+			#{termsOfUseId},
+			#{memberId},
+			#{agree},
+			#{memberId},
+			now()
+		)
+	</insert>
+	
 </mapper>

@@ -1,5 +1,10 @@
 package kr.mook.user.signup.dao;
 
+import java.util.List;
+
+import kr.mook.user.common.dto.SignUpDTO;
+import kr.mook.user.common.dto.TermsOfUseMemberDTO;
+
 /**
  * <strong>SignUpDao</strong><br/>
  * <em>- Type : Interface</em><br/>
@@ -11,6 +16,7 @@ package kr.mook.user.signup.dao;
  * 
  * 2. SignUpDao 수정 이력<br/>
  * - 2024. 07. 11 : 회원가입 Data Access Object Interface 작성<br/>
+ * - 2024. 07. 14 : 회원가입 Method 작성<br/>
  * <br/>
  * 
  * @since 2024. 07. 11
@@ -81,5 +87,67 @@ public interface SignUpDao {
 	 * @version 1.0.0
 	 */
 	public int countByEmail(String email);
-
+	
+	/**
+	 * <strong>insertMember</strong><br/>
+	 * <em>- Type : Method</em><br/>
+	 * <br/>
+	 * 
+	 * 1. insertMember에 대한 설명<br/>
+	 * - 사용자가 입력한 회원 가입 정보를 데이터베이스에 저장합니다.<br/>
+	 * <br/>
+	 * 
+	 * 2. insertMember 수정 이력<br/>
+	 * - 2024. 07. 14 : Method 작성<br/>
+	 * <br/>
+	 * 
+	 * @param signUpDto
+	 * @return
+	 * @since 2024. 07. 14
+	 * @author In-mook, Jeong
+	 * @version 1.0.0
+	 */
+	public int insertMember(SignUpDTO signUpDto);
+	
+	/**
+	 * <strong>selectIdByUserId</strong><br/>
+	 * <em>- Type : Method</em><br/>
+	 * <br/>
+	 * 
+	 * 1. selectIdByUserId에 대한 설명<br/>
+	 * - 사용자가 입력한 아이디(계정)를 통해 사용자 아이디(숫자 형식)를 조회합니다.<br/>
+	 * <br/>
+	 * 
+	 * 2. selectIdByUserId 수정 이력<br/>
+	 * - 2024. 07. 14 : Method 작성<br/>
+	 * <br/>
+	 * 
+	 * @param userId : 사용자 계정(아이디)
+	 * @return
+	 * @since 2024. 07. 14
+	 * @author In-mook, Jeong
+	 * @version 1.0.0
+	 */
+	public int selectIdByUserId(String userId);
+	
+	/**
+	 * <strong>insertTermsOfUseMembers</strong><br/>
+	 * <em>- Type : Method</em><br/>
+	 * <br/>
+	 * 
+	 * 1. insertTermsOfUseMembers에 대한 설명<br/>
+	 * - 사용자가 회원 가입을 위해 동의한 약관 정보를 데이터베이스에 저장합니다.<br/>
+	 * <br/>
+	 * 
+	 * 2. insertTermsOfUseMembers 수정 이력<br/>
+	 * - 2024. 07. 14 : Method 작성<br/>
+	 * <br/>
+	 * 
+	 * @param termsOfUseMembers
+	 * @return
+	 * @since 2024. 07. 14
+	 * @author In-mook, Jeong
+	 * @version 1.0.0
+	 */
+	public int insertTermsOfUseMembers(TermsOfUseMemberDTO termsOfUseMember);
 }

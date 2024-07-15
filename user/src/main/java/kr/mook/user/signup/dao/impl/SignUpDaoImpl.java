@@ -1,10 +1,14 @@
 package kr.mook.user.signup.dao.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import kr.mook.user.common.dto.SignUpDTO;
+import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.signup.dao.SignUpDao;
 
 /**
@@ -19,6 +23,7 @@ import kr.mook.user.signup.dao.SignUpDao;
  * 
  * 2. SignUpDaoImpl 수정 이력<br/>
  * - 2024. 07. 11 : 회원가입 DAO Implement class 작성<br/>
+ * - 2024. 07. 14 : 회원가입 Method 작성<br/>
  * <br/>
  * ㄴ
  * @since 2024. 07. 11
@@ -46,6 +51,21 @@ public class SignUpDaoImpl implements SignUpDao {
 	@Override
 	public int countByEmail(String email) {
 		return sqlSession.selectOne(NAME_SPACE+".countByEmail", email);
+	}
+
+	@Override
+	public int insertMember(SignUpDTO signUpDto) {
+		return sqlSession.insert(NAME_SPACE+".insertMember", signUpDto);
+	}
+	
+	@Override
+	public int selectIdByUserId(String userId) {
+		return sqlSession.selectOne(NAME_SPACE+".selectIdByUserId", userId);
+	}
+
+	@Override
+	public int insertTermsOfUseMembers(TermsOfUseMemberDTO termsOfUseMember) {
+		return sqlSession.insert(NAME_SPACE+".insertTermsOfUseMembers", termsOfUseMember);
 	}
 
 }
