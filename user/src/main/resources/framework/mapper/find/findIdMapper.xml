@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.mook.user.signup.dao.FindIdMapper">
+	
+	<select id="selectUserIdByNameEmail" parameterType="kr.mook.user.find.dto.FindDTO" resultType="String">
+		/** FindIdMapper.selectUserIdByNameEmail */
+		SELECT
+			M.userId
+		FROM
+			MEMBER M
+		WHERE
+			M.name = #{name}
+			AND M.email = #{email}
+	</select>
+</mapper>
