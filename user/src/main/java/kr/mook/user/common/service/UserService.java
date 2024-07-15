@@ -3,7 +3,6 @@ package kr.mook.user.common.service;
 import java.util.List;
 
 import kr.mook.user.common.dto.LoginDTO;
-import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.member.dto.MemberDTO;
 
@@ -68,6 +67,4 @@ public interface UserService {
 	 * @author In-mook, Jeong
 	 */
 	public List<MemberDTO> list(MemberDTO memberDTO);
-	
-	public boolean addTermsOfUsemember(List<TermsOfUseMemberDTO> termsOfUseMemberDtoList);
 }

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import kr.mook.crypto.EncryptUtil;
 import kr.mook.user.common.dto.LoginDTO;
-import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.common.dto.UserResultContentDTO;
 import kr.mook.user.common.dto.UserResultDTO;
 import kr.mook.user.common.service.UserService;
@@ -165,13 +164,4 @@ public class UserServiceImpl implements UserService {
 		
 		return memberList;
 	}
-
-	@Override
-	public boolean addTermsOfUsemember(List<TermsOfUseMemberDTO> termsOfUseMemberDtoList) {
-		for(TermsOfUseMemberDTO termsOfUseMemberDTO: termsOfUseMemberDtoList) {
-			this.memberDao.insertTermsOfUseMember(termsOfUseMemberDTO);
-		}
-		return true;
-	}
-
 }

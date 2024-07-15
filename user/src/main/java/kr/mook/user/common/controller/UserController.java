@@ -113,23 +113,6 @@ public class UserController {
 		return UserViewConstatns.HOME;
 	}
 	
-	/**
-	 * Move you to the find ID page.
-	 * 
-	 * @param request
-	 * @return
-	 * @since 2024.03.14
-	 * @author In-mook, Jeong
-	 */
-	@RequestMapping(value = "/find-id", method = RequestMethod.GET)
-	public String findId(HttpServletRequest request) {
-		this.setCurrentMenu(request);
-		
-		HttpSession session = request.getSession();
-		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
-		if(isAlive) return UserViewConstatns.HOME;
-		return UserViewConstatns.COMMON_FIND_ID;
-	}
 	
 	/**
 	 * This method provides the function to find the userId.
@@ -147,23 +130,6 @@ public class UserController {
 		return this.userService.getUserId(memberDTO);
 	}
 	
-	/**
-	 * Move you to the find Password page.
-	 * 
-	 * @param request
-	 * @return
-	 * @since 2024.03.14
-	 * @author In-mook, Jeong
-	 */
-	@RequestMapping(value = "/find-password", method = RequestMethod.GET)
-	public String findPassword(HttpServletRequest request) {
-		this.setCurrentMenu(request);
-		
-		HttpSession session = request.getSession();
-		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
-		if(isAlive) return UserViewConstatns.HOME;
-		return UserViewConstatns.COMMON_FIND_PASSWORD;
-	}
 	
 	/**
 	 * This method provides the ability to issue a temporary password when the user forgets the password.<br/>

@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.mook.user.common.dto.LoginDTO;
-import kr.mook.user.common.dto.TermsOfUseMemberDTO;
 import kr.mook.user.member.dao.MemberDao;
 import kr.mook.user.member.dto.MemberDTO;
 
@@ -42,10 +41,4 @@ public class MemberDaoImpl implements MemberDao {
 	public void updateTempPassword(MemberDTO memberDTO) {
 		sqlSession.update(NAME_SPACE+".updateTempPassword", memberDTO);
 	}
-
-	@Override
-	public void insertTermsOfUseMember(TermsOfUseMemberDTO termsOfUseMemberDTO) {
-		sqlSession.insert(NAME_SPACE+".insertTermsOfUseMember", termsOfUseMemberDTO);
-	}
-
 }
