@@ -35,7 +35,7 @@
 			M.email = #{email}
 	</select>
 	
-	<insert id="insertMember" parameterType="kr.mook.user.common.dto.SignUpDTO">
+	<insert id="insertMember" parameterType="kr.mook.user.signup.dto.SignUpDTO">
 		/** SignUpMapper.insertMember */
 		INSERT INTO MEMBER(
 			userId,
@@ -81,7 +81,7 @@
 			userId = #{userId}
 	</select>
 	
-	<insert id="insertTermsOfUseMembers" parameterType="kr.mook.user.common.dto.TermsOfUseMemberDTO">
+	<insert id="insertTermsOfUseMembers" parameterType="kr.mook.user.signup.dto.TermsOfUseMemberDTO">
 		/** SignUpMapper.insertTermsOfUseMembers */
 		INSERT INTO TERMS_OF_USE_MEMBERS (
 			termsOfUseId,

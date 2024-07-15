@@ -78,8 +78,11 @@ public class SignUpServiceImpl implements SignUpService {
 		
 		if(insertMemberCount > 0 && insertTermsMemberCount == termsOfUseMembers.size()) {
 			// 성공
-			userResultDTO.setStatus(StatusEnum.SIGNUP_SUCCESS.getStatus(), StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
-					UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
+			userResultDTO.setStatus(
+				StatusEnum.SIGNUP_SUCCESS.getStatus(),
+				StatusEnum.SIGNUP_SUCCESS.getStatusEngMessage(),
+				UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS
+			);
 			
 			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_SIGN_UP_SUCCESS);
 		} else {
