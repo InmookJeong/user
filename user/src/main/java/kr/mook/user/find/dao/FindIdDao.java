@@ -36,6 +36,9 @@ public interface FindIdDao {
 	 * 
 	 * @param findDTO
 	 * @return
+	 * @since 2024. 07. 15
+	 * @author In-mook, Jeong
+	 * @version 1.0.0
 	 */
 	public String selectUserIdByNameEmail(final FindDTO findDTO);
 

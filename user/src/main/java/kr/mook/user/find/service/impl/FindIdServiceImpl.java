@@ -33,7 +33,7 @@ import kr.mook.user.find.service.FindIdService;
 @Service
 public class FindIdServiceImpl implements FindIdService {
 	
-	// FindIdServiceImpl Logger
+	// FindIdService Logger
 	private final Logger _log = Logger.getLogger(FindIdService.class.getName());
 	
 	@Autowired
@@ -44,7 +44,6 @@ public class FindIdServiceImpl implements FindIdService {
 		UserResultDTO userResultDTO = new UserResultDTO("Find-ID");
 		
 		String userId = this.findIdDao.selectUserIdByNameEmail(findDto);
-		_log.info("##### userId : " + userId);
 		if(userId != null && !userId.isEmpty()) {
 			// 성공
 			userResultDTO.setStatus(

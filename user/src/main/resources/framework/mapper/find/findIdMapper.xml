@@ -3,7 +3,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.mook.user.signup.dao.FindIdMapper">
+<mapper namespace="kr.mook.user.find.dao.FindIdMapper">
 	
 	<select id="selectUserIdByNameEmail" parameterType="kr.mook.user.find.dto.FindDTO" resultType="String">
 		/** FindIdMapper.selectUserIdByNameEmail */

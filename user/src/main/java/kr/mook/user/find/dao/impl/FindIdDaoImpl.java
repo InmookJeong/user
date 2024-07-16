@@ -31,7 +31,7 @@ public class FindIdDaoImpl implements FindIdDao {
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static final String NAME_SPACE = "kr.mook.user.signup.dao.FindIdMapper";
+	private static final String NAME_SPACE = "kr.mook.user.find.dao.FindIdMapper";
 	
 	@Override
 	public String selectUserIdByNameEmail(FindDTO findDTO) {
