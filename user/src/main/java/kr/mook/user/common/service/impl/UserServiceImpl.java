@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import kr.mook.crypto.EncryptUtil;
 import kr.mook.user.common.dto.LoginDTO;
 import kr.mook.user.common.dto.UserResultContentDTO;
 import kr.mook.user.common.dto.UserResultDTO;
@@ -17,7 +16,6 @@ import kr.mook.user.constants.StatusEnum;
 import kr.mook.user.constants.UserMessageConstants;
 import kr.mook.user.member.dao.MemberDao;
 import kr.mook.user.member.dto.MemberDTO;
-import kr.mook.user.util.data.RandomStringUtils;
 
 /**
  * This is a class that implements user-related business logic.
@@ -109,33 +107,6 @@ public class UserServiceImpl implements UserService {
 					);
 			
 			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_FIND_ID_FAILED);
-		}
-		
-		return userResultDTO;
-	}
-
-	@Override
-	public UserResultDTO getTempPassword(MemberDTO memberDTO) {
-		UserResultDTO userResultDTO = new UserResultDTO("Find-PW");
-		if(this.memberDao.countByMemberDto(memberDTO) > 0) {
-			userResultDTO.setStatus(
-				StatusEnum.FIND_ID_SUCCESS.getStatus(),
-				StatusEnum.FIND_ID_SUCCESS.getStatusEngMessage(),
-				StatusEnum.FIND_ID_SUCCESS.getStatusKorMessage()
-			);
-			
-			String tempPassword = RandomStringUtils.getRandomString(10);
-			memberDTO.setPassword(EncryptUtil.toSHA256(tempPassword));
-			this.memberDao.updateTempPassword(memberDTO);
-			userResultDTO.setContent("STRING", tempPassword);
-		} else {
-			userResultDTO.setStatus(
-				StatusEnum.FIND_PW_FAILED.getStatus(),
-				StatusEnum.FIND_PW_FAILED.getStatusEngMessage(),
-				StatusEnum.FIND_PW_FAILED.getStatusKorMessage()
-			);
-			
-			userResultDTO.setContent("STRING", UserMessageConstants.MESSAGE_FIND_PW_FAILED);
 		}
 		
 		return userResultDTO;

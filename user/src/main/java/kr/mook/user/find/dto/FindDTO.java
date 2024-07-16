@@ -9,8 +9,8 @@ package kr.mook.user.find.dto;
  * - FindDTO는 아이디 찾기 또는 비밀번호 찾기를 위해 데이터를 전달하는 DTO입니다.<br/>
  * <br/>
  * 
- * 2. FindController 수정 이력<br/>
- * - 2024. 07. 15 : 회원가입 API 최초 작성<br/>
+ * 2. FindDTO 수정 이력<br/>
+ * - 2024. 07. 15 : FindDTO 최초 작성<br/>
  * <br/>
  * 
  * @since 2024. 07. 15

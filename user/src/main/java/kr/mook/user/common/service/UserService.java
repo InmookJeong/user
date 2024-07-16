@@ -49,16 +49,6 @@ public interface UserService {
 	public UserResultDTO getUserId(MemberDTO memberDTO);
 	
 	/**
-	 * If user information is available, a temporary password will be created and provided to you.<br/>
-	 * 
-	 * @param memberDTO
-	 * @return
-	 * @since 2024.03.14
-	 * @author In-mook, Jeong
-	 */
-	public UserResultDTO getTempPassword(MemberDTO memberDTO);
-	
-	/**
 	 * Search the user list according to the search conditions.
 	 * 
 	 * @param memberDTO
