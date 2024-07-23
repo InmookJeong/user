@@ -40,7 +40,7 @@ public class UserMessageConstants {
 	public static final String STATUS_KOR_MESSAGE_SIGN_UP_FAILED = "회원가입 실패";
 	
 	// FIND-ID
-	public static final String MESSAGE_FIND_ID_SUCCESS = "아이디 찾기에 성공하였습니다..";
+	public static final String MESSAGE_FIND_ID_SUCCESS = "아이디 찾기에 성공하였습니다.";
 	public static final String STATUS_ENG_MESSAGE_FIND_ID_SUCCESS = "Success Find ID";
 	public static final String STATUS_KOR_MESSAGE_FIND_ID_SUCCESS = "아이디 찾기 성공";
 	
@@ -49,11 +49,20 @@ public class UserMessageConstants {
 	public static final String STATUS_KOR_MESSAGE_FIND_ID_FAILED = "아이디 찾기 실패";
 	
 	// FIND-PW
-	public static final String MESSAGE_FIND_PW_SUCCESS = "비밀번호 찾기에 성공하였습니다..";
+	public static final String MESSAGE_FIND_PW_SUCCESS = "비밀번호 찾기에 성공하였습니다.";
 	public static final String STATUS_ENG_MESSAGE_FIND_PW_SUCCESS = "Success Find Password";
 	public static final String STATUS_KOR_MESSAGE_FIND_PW_SUCCESS = "비밀번호 찾기 성공";
 	
 	public static final String MESSAGE_FIND_PW_FAILED = "비밀번호를 찾지 못했습니다.";
 	public static final String STATUS_ENG_MESSAGE_FIND_PW_FAILED = "Failed Find Password";
 	public static final String STATUS_KOR_MESSAGE_FIND_PW_FAILED = "비밀번호 찾기 실패";
+	
+	// SEARCH-LIST
+	public static final String MESSAGE_SEARCH_LIST_SUCCESS = "사용자 목록 조회에 성공하였습니다.";
+	public static final String STATUS_ENG_MESSAGE_SEARCH_LIST_SUCCESS = "Success search user list";
+	public static final String STATUS_KOR_MESSAGE_SEARCH_LIST_SUCCESS = "사용자 목록 조회 성공";
+	
+	public static final String MESSAGE_SEARCH_LIST_FAILED = "사용자 목록 조회에 실패하였습니다.";
+	public static final String STATUS_ENG_MESSAGE_SEARCH_LIST_FAILED = "Failed search user list";
+	public static final String STATUS_KOR_MESSAGE_SEARCH_LIST_FAILED = "사용자 목록 조회 실패";
 }

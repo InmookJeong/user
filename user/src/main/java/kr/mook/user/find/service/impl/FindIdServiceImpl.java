@@ -19,7 +19,7 @@ import kr.mook.user.find.service.FindIdService;
  * 
  * 1. FindIdServiceImpl에 대한 설명<br/>
  * - FindIdServiceImpl는 아이디를 찾기 위한 기능을 담당하는 Service 구현체이며,<br/>
- * - FindIdServiceImpl에 작성된 Method의 비즈니스 로직을 구현합니다.<br/>
+ * - FindIdService에 작성된 Method의 비즈니스 로직을 구현합니다.<br/>
  * <br/>
  * 
  * 2. FindIdServiceImpl 수정 이력<br/>

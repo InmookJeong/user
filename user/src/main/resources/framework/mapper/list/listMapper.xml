@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.mook.user.list.dao.ListMapper">
+	
+	<select id="getMembers" parameterType="kr.mook.user.list.dto.SearchDTO" resultType="kr.mook.user.list.dto.SearchResultDTO">
+		/** ListMapper.getMembers */
+		SELECT
+			M.id,
+			M.userId,
+			M.name,
+			M.email
+		FROM
+			MEMBER M
+		WHERE
+			1 = 1
+			<if test='userId != null and userId != ""'>
+			AND M.userId LIKE CONCAT('%', #{userId}, '%')
+			</if>
+			<if test='name != null and name != ""'>
+			AND M.name LIKE CONCAT('%', #{name}, '%')
+			</if>
+			<if test='email != null and email != ""'>
+			AND M.email LIKE CONCAT('%', #{email}, '%')
+			</if>
+	</select>
+</mapper>

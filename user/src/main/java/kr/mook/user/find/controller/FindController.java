@@ -112,7 +112,7 @@ public class FindController {
 	 * 		&emsp;    }<br/>
 	 * 		- 실패 시<br/>
 	 * 		&emsp;    {<br/>
-	 * 		&emsp;&emsp;    "apiTitle" : "Sign-up",<br/>
+	 * 		&emsp;&emsp;    "apiTitle" : "Find-ID",<br/>
 	 * 		&emsp;&emsp;    "status" : "FID-400",<br/>
 	 * 		&emsp;&emsp;    "statusMessage" : {<br/>
 	 * 		&emsp;&emsp;&emsp;    "eng" : "Failed Find ID",<br/>
@@ -189,7 +189,7 @@ public class FindController {
 	 * 		&emsp;    }<br/>
 	 * 		- 실패 시<br/>
 	 * 		&emsp;    {<br/>
-	 * 		&emsp;&emsp;    "apiTitle" : "Sign-up",<br/>
+	 * 		&emsp;&emsp;    "apiTitle" : "Find-PW",<br/>
 	 * 		&emsp;&emsp;    "status" : "FPW-400",<br/>
 	 * 		&emsp;&emsp;    "statusMessage" : {<br/>
 	 * 		&emsp;&emsp;&emsp;    "eng" : "Failed Find Password",<br/>

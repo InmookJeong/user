@@ -59,6 +59,16 @@ public enum StatusEnum {
 		"FPW-400", 
 		UserMessageConstants.STATUS_ENG_MESSAGE_FIND_PW_FAILED,
 		UserMessageConstants.STATUS_KOR_MESSAGE_FIND_PW_FAILED
+	),
+	SEARCH_LIST_SUCCESS(
+		"USL-200", 
+		UserMessageConstants.STATUS_ENG_MESSAGE_SEARCH_LIST_FAILED,
+		UserMessageConstants.STATUS_KOR_MESSAGE_SEARCH_LIST_FAILED
+	),
+	SEARCH_LIST_FAILED(
+		"USL-400", 
+		UserMessageConstants.STATUS_ENG_MESSAGE_SEARCH_LIST_FAILED,
+		UserMessageConstants.STATUS_KOR_MESSAGE_SEARCH_LIST_FAILED
 	);
 	
 	// Fields

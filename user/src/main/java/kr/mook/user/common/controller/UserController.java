@@ -130,22 +130,6 @@ public class UserController {
 		return this.userService.getUserId(memberDTO);
 	}
 	
-	/**
-	 * Move you to the search user list page.
-	 * 
-	 * @param request
-	 * @return
-	 * @since 2024.03.14
-	 * @author In-mook, Jeong
-	 */
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		boolean isAlive = DataUtils.objectToBoolean(session.getAttribute("isAlive"));
-		if(isAlive) return UserViewConstatns.ADMIN_LIST;
-		return UserViewConstatns.HOME;
-	}
-	
 	private void setPageTitle(final HttpServletRequest request, final String title) {
 		request.setAttribute("pageTitle", title);
 	}
