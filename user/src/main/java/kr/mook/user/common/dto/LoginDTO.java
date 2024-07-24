@@ -38,4 +38,10 @@ public class LoginDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	// toString
+	@Override
+	public String toString() {
+		return "LoginDTO [userId=" + userId + ", password=" + password + "]";
+	}
 }

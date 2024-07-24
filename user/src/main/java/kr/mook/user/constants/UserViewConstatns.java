@@ -19,8 +19,7 @@ public class UserViewConstatns {
 	public static final String FIND_ID = "find/find-id";	// find-id page
 	public static final String FIND_PASSWORD = "find/find-password";	// find-password page
 	
-	// COMMON PAGES
-	public static final String COMMON_LOGIN = "common/login";	// log-in page
+	public static final String LOGIN = "login/login";	// log-in page
 	
 	// MEMBER
 	public static final String MEMBER_MY_PAGE = "member/my-page";	// my page

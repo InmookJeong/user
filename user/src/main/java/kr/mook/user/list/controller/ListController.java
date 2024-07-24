@@ -3,7 +3,6 @@ package kr.mook.user.list.controller;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,6 +61,9 @@ public class ListController {
 	 * 
 	 * @param request
 	 * @return
+	 * @since 2024. 07. 20
+	 * @author In-mook, Jeong
+	 * @version 1.0.0
 	 */
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String list(HttpServletRequest request) {
@@ -82,11 +84,10 @@ public class ListController {
 	 * <br/>
 	 * 
 	 * 3. findId 수정 이력<br/>
-	 * - 2024. 07. 15 : Method 작성<br/>	
+	 * - 2024. 07. 21 : Method 작성<br/>	
 	 * <br/>
 	 * 
 	 * @param request
-	 * @param response
 	 * @param searchDTO 검색 값을 전달하는 DTO
 	 * @return
 	 * 		- 성공 시<br/>
@@ -117,7 +118,7 @@ public class ListController {
 	 */
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	@ResponseBody
-	public UserResultDTO list(HttpServletRequest request, HttpServletResponse response, @RequestBody SearchDTO searchDTO) {
+	public UserResultDTO list(HttpServletRequest request, @RequestBody SearchDTO searchDTO) {
 		_log.info("##### 회원 목록 조회.");
 		return listService.searchList(searchDTO);
 	}
